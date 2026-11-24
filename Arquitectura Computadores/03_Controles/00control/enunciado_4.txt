@@ -1,0 +1,21 @@
+Debe completar las afirmaciones con la expresión faltante en un modelo Von Neuman de un computador
+
+a. Las componentes principales de un computador son CPU, unidad de E/S y Vacío 1 Pregunta 4
+ 
+
+b. El Vacío 2 Pregunta 4
+ 
+ es un circuito combinacional que permite el tránsito de datos por todas las unidades.
+
+c. El registro Vacío 3 Pregunta 4
+ 
+ permite la comunicación entre la memoria y el procesador.
+
+d. El registro Vacío 4 Pregunta 4
+ 
+ contiene en la fase  Vacío 5 Pregunta 4
+ 
+ la dirección de la próxima instrucción a ejecutar.
+
+e. Si el registro MAR tiene 20 bits y la memoria almacena BYTES, la capacidad de memoria es Vacío 6 Pregunta 4
+ 

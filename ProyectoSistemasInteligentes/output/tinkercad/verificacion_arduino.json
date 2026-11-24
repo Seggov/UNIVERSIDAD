@@ -1,0 +1,101 @@
+{
+  "url": "https://www.tinkercad.com/things/i3ChqoUqULW/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits",
+  "recargaVerificada": true,
+  "compilacionTinkercad": "correcta",
+  "pruebas": [
+    {
+      "prueba": "Arranque directo en espera tras recargar",
+      "q": 0,
+      "correcto": true
+    },
+    {
+      "prueba": "Ganador se ignora fuera de evaluacion",
+      "q": 0,
+      "correcto": true
+    },
+    {
+      "prueba": "Otra ronda se ignora en espera",
+      "q": 0,
+      "correcto": true
+    },
+    {
+      "prueba": "Inicio por pulsador",
+      "q": 1,
+      "correcto": true
+    },
+    {
+      "prueba": "Reinicio durante inicializacion",
+      "q": 0,
+      "correcto": true
+    },
+    {
+      "prueba": "Inicio de nueva partida",
+      "q": 1,
+      "correcto": true
+    },
+    {
+      "prueba": "Avance automatico hasta evaluacion",
+      "q": 3,
+      "correcto": true
+    },
+    {
+      "prueba": "Otra ronda vuelve a preparacion",
+      "q": 2,
+      "correcto": true
+    },
+    {
+      "prueba": "Preparacion termina automaticamente",
+      "q": 3,
+      "correcto": true
+    },
+    {
+      "prueba": "Ganador lleva al fin",
+      "q": 4,
+      "correcto": true
+    },
+    {
+      "prueba": "Inicio no altera el fin de partida",
+      "q": 4,
+      "correcto": true
+    },
+    {
+      "prueba": "Otra ronda no altera el fin de partida",
+      "q": 4,
+      "correcto": true
+    },
+    {
+      "prueba": "Reinicio desde fin",
+      "q": 0,
+      "correcto": true
+    },
+    {
+      "prueba": "Estado final listo para el usuario",
+      "q": 0,
+      "correcto": true
+    }
+  ],
+  "componentes": {
+    "arduino": "id_1a1a4c4a7d3-23-55fe0cb5-00c5-4472-b6f5-11e4ef485e6f_13",
+    "leds": [
+      "id_1a1a6fce812-1a-fc77eca1-da9f-45bf-b4b9-7b13041beb4b_14",
+      "id_1a1a6fcffa1-21-0f01c19b-8197-46a9-ae97-f153357b8497_14",
+      "id_1a1a6fd22ba-28-9e1a5ab0-9d9b-412d-9572-fb16b2270a9d_14",
+      "id_1a1a6fd5455-2f-946a93a8-d9cd-45c5-bd6f-7bf066ea2917_14",
+      "id_1a1a6fd7784-36-493f0df7-cf5b-44a7-b62b-b6b5dea779ee_14"
+    ],
+    "resistencias": [
+      "id_1a1a6fdb504-3d-d0d74d8b-83e4-460f-ba33-718be21594f7_14",
+      "id_1a1a6fdd831-44-ed77b06f-4693-424b-9177-6d87a911522a_14",
+      "id_1a1a6fdfb60-4b-d8da9025-5472-4312-8d14-a57be9b7fca2_14",
+      "id_1a1a6fe3ac6-52-deed9947-d2b8-4a00-84e4-8abc826f0535_14",
+      "id_1a1a6fe5df8-59-d6a13b8a-bf29-47a3-b1fb-3b60925f1b7d_14"
+    ],
+    "pulsadores": [
+      "id_1a1a6fe81b5-60-275b9086-cfce-4b2a-9d5b-5b215b2fa274_14",
+      "id_1a1a6fec037-69-56fc2b9c-55fe-4e99-9b18-2dd1597299ec_14",
+      "id_1a1a6fee364-72-fac38655-424c-4d19-b2af-a1d30c202123_14",
+      "id_1a1a6fefebd-7b-e89be2fe-53fc-487d-9f31-38dfc0d94c48_14"
+    ]
+  },
+  "archivo": "Controlador_Judge_Arduino.ino"
+}

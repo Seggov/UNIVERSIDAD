@@ -1,0 +1,31 @@
+Complete las oraciones con conceptos de arquitectura y organización de computadores
+
+a. Von Neuman dijo que los principios del computador fueron establecidos por Vacío 1 Pregunta 3
+ 
+
+
+b. El modelo de Von Neuman considera Vacío 2 Pregunta 3
+ 
+  
+
+c. Un computador vectorial contiene Vacío 3 Pregunta 3
+ 
+
+d. Un computador paralelo contiene Vacío 4 Pregunta 3
+ 
+
+e. En la arquitectura Intel el program counter corresponde al Vacío 5 Pregunta 3
+ 
+
+f. La Vacío 6 Pregunta 3
+ 
+ permite restar y sumar como una misma operación.
+
+g. El largo de palabra define Vacío 7 Pregunta 3
+ 
+ que puede pasar por el bus de datos.
+
+h. Para intercambiar datos entre la memoria y el procesador, es obligatorio pasar por Vacío 8 Pregunta 3
+ 
+ y el bus de datos.
+

@@ -1,0 +1,12 @@
+flowchart LR
+    inicio[Inicio] --> q0(("q0<br/>Espera"))
+    q0 -->|Sin iniciar| q0
+    q0 -->|Game B| q1(("q1<br/>Inicializar"))
+    q1 -->|Siguiente pulso| q2(("q2<br/>Preparar ronda"))
+    q2 -->|Preparación en curso| q2
+    q2 -->|Números revelados| q3(("q3<br/>Evaluar ronda"))
+    q3 -->|Evaluación en curso| q3
+    q3 -->|Ronda resuelta y sin ganador| q2
+    q3 -->|Ronda resuelta y hay ganador| q4(("q4<br/>Fin de partida"))
+    q4 -->|Sin reinicio| q4
+    q4 -->|Reinicio| q0

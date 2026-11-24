@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen Visual - Laboratorio, IPs, Rack y Firewall</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --border: #334155;
+            --primary: #38bdf8;
+            --accent: #818cf8;
+            --trusted: #22c55e;
+            --external: #ef4444;
+            --dmz: #f97316;
+            --custom: #06b6d4;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        header h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .card-header h2 {
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+        .badge {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-trusted { background-color: rgba(34, 197, 94, 0.2); color: var(--trusted); border: 1px solid var(--trusted); }
+        .badge-external { background-color: rgba(239, 68, 68, 0.2); color: var(--external); border: 1px solid var(--external); }
+        .badge-dmz { background-color: rgba(249, 115, 22, 0.2); color: var(--dmz); border: 1px solid var(--dmz); }
+        
+        /* Diagramas Visuales */
+        .diagram {
+            background: #090d16;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: "Courier New", monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            color: #38bdf8;
+            line-height: 1.4;
+        }
+
+        /* Representación de Rack */
+        .rack-visual {
+            background: #020617;
+            border: 3px solid #475569;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        .rack-unit {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 4px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rack-unit-title {
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+        .ports-cluster {
+            display: flex;
+            gap: 3px;
+        }
+        .port-led {
+            width: 10px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 2px;
+            display: inline-block;
+        }
+        .port-led.orange { background: #f97316; }
+        .port-led.red { background: #ef4444; }
+
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+        th, td {
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        th {
+            background-color: rgba(255,255,255,0.05);
+            color: var(--primary);
+        }
+
+        /* Callout Box */
+        .callout {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 10px 14px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+        .callout.warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left-color: var(--external);
+        }
+        .code-inline {
+            background: #090d16;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #f43f5e;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Guía Visual del Taller de Ciberseguridad</h1>
+        <p>Conexión Física (Rack), Esquema de IPs, Firewall WatchGuard y Protocolos</p>
+    </header>
+
+    <!-- FILA 1: CONEXIÓN FÍSICA Y EL RACK -->
+    <div class="grid">
+        <div class="card">
+            <div class="card-header">
+                <h2>1. Conexión Física: Tu PC al Rack</h2>
+                <span class="badge badge-trusted">Capa 1</span>
+            </div>
+            <p>Cadena exacta de cables que permite que la señal salga de tu computador hacia el laboratorio:</p>
+            
+            <div class="diagram">
+[ Tu PC de Trabajo ]
+       │
+       ▼ (1) Patch Cord (cable flexible RJ-45)
+[ Toma de Red en la Pared / Roseta ]
+       │
+       ▼ (2) Cable UTP Cat 6 rígido (va por canaleta oculta)
+[ TRASERA DEL RACK: Punchado en Patch Panel ]
+       │
+       ▼ (3) Salida frontal del Patch Panel
+[ FRONTAL DEL RACK: Patch Cord ]
+       │
+       ▼ (4) Switch de Acceso (Capa 2)
+       │
+       ▼ (5) Cable UTP de Enlace
+[ FIREWALL FÍSICO WATCHGUARD (Capa 3/4) ]
+            </div>
+
+            <div class="callout">
+                <strong>¿Por qué existe el Patch Panel?</strong> Para proteger el switch. El cableado de pared es rígido y no se debe doblar ni conectar/desconectar directamente; el patch panel recibe ese cable fijo y ofrece puertos frontales accesibles.
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>2. Vista del Rack de 19" en el Laboratorio</h2>
+                <span class="badge" style="background:#334155;">Hardware</span>
+            </div>
+            <p>Así están organizados verticalmente los equipos en el bastidor metálico:</p>
+
+            <div class="rack-visual">
+                <!-- Patch Panel -->
+                <div class="rack-unit" style="border-left: 4px solid #94a3b8;">
+                    <div>
+                        <div class="rack-unit-title">PATCH PANEL (Organizador Pasivo)</div>
+                        <small style="color:var(--text-muted);">Puertos 1-24 RJ-45 de puestos de trabajo</small>
+                    </div>
+                    <div class="ports-cluster">
+                        <span class="port-led" style="background:#475569;"></span>
+                        <span class="port-led" style="background:#475569;"></span>
+                        <span class="port-led" style="background:#475569;"></span>
+                        <span class="port-led" style="background:#475569;"></span>
+                    </div>
+                </div>
+
+                <!-- Switch -->
+                <div class="rack-unit" style="border-left: 4px solid var(--primary);">
+                    <div>
+                        <div class="rack-unit-title">SWITCH DE ACCESO (Capa 2)</div>
+                        <small style="color:var(--text-muted);">Reenvía tramas por direcciones MAC locales</small>
+                    </div>
+                    <div class="ports-cluster">
+                        <span class="port-led"></span>
+                        <span class="port-led"></span>
+                        <span class="port-led"></span>
+                        <span class="port-led"></span>
+                    </div>
+                </div>
+
+                <!-- Firewall WatchGuard -->
+                <div class="rack-unit" style="border-left: 4px solid var(--external);">
+                    <div>
+                        <div class="rack-unit-title">FIREWALL WATCHGUARD XTM 5</div>
+                        <small style="color:var(--text-muted);">P0 (Ext) | P1 (Trusted) | P2 (Custom) | P3 (DMZ)</small>
+                    </div>
+                    <div class="ports-cluster">
+                        <span class="port-led red" title="P0 External"></span>
+                        <span class="port-led" title="P1 Trusted"></span>
+                        <span class="port-led orange" title="P2/P3 DMZ"></span>
+                    </div>
+                </div>
+
+                <!-- Servidor / ODF -->
+                <div class="rack-unit" style="border-left: 4px solid #a855f7;">
+                    <div>
+                        <div class="rack-unit-title">ODF (Distribuidor Fibra Óptica)</div>
+                        <small style="color:var(--text-muted);">Llegada de fibra Monomodo / Multimodo</small>
+                    </div>
+                    <div class="ports-cluster">
+                        <span class="port-led" style="background:#a855f7;"></span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+                <strong>Conexión de Consola:</strong> Se usa el puerto RJ-45/USB de consola frontal del switch o firewall para configurarlo fuera de banda si no responde por IP.
+            </p>
+        </div>
+    </div>
+
+    <!-- FILA 2: POR QUÉ NOS CONECTAMOS Y MAPA DE IPS -->
+    <div class="grid">
+        <div class="card">
+            <div class="card-header">
+                <h2>3. ¿Por qué nos conectamos a otro PC en el mismo Rack?</h2>
+                <span class="badge badge-custom">Capa 2 / ARP</span>
+            </div>
+            <p>Si PC 1 (<code class="code-inline">192.168.1.10</code>) se comunica con PC 2 (<code class="code-inline">192.168.1.20</code>) en el mismo switch:</p>
+
+            <div class="diagram">
+[ PC A: 192.168.1.10 ]                      [ PC B: 192.168.1.20 ]
+       │                                             ▲
+       ▼ (1) Pregunta ARP:                           │ (3) Entrega directa
+         "¿Quién tiene la 1.20?"                     │
+  ┌─────────────────────────────────────────────────────────────┐
+  │                 SWITCH DEL RACK (Capa 2)                    │
+  │  Tabla MAC: [Puerto 3: MAC de A]  [Puerto 7: MAC de B]      │
+  └─────────────────────────────────────────────────────────────┘
+            </div>
+
+            <ul style="font-size:0.85rem; padding-left: 20px; color: var(--text-muted);">
+                <li><strong>Misma Subred:</strong> Como la máscara es <code class="code-inline">255.255.255.0</code> (/24), ambos saben que están en la red local. <strong>No necesitan usar el Firewall</strong>.</li>
+                <li><strong>Protocolo ARP:</strong> PC A pregunta por broadcast quién tiene la IP de destino. PC B responde con su dirección física MAC.</li>
+                <li><strong>El Switch reenvía por hardware:</strong> Conecta el puerto eléctrico de A con el de B instantáneamente.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>4. Mapa de IPs (IPEs) y sus Tipos</h2>
+                <span class="badge" style="background:#6366f1;">Capa 3</span>
+            </div>
+            <p>Una IP identifica a un equipo lógicamente. En el taller se usan <strong>IPs Privadas</strong> (RFC 1918):</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rango Privado</th>
+                        <th>Clase</th>
+                        <th>Uso en el Taller</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code class="code-inline">10.0.0.0/8</code></td>
+                        <td>Clase A</td>
+                        <td><strong>Trusted:</strong> Red del Admin (<code class="code-inline">10.0.1.x</code>).</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">172.16.0.0/12</code></td>
+                        <td>Clase B</td>
+                        <td>Redes intermedias y servidores.</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">192.168.0.0/16</code></td>
+                        <td>Clase C</td>
+                        <td><strong>Grupos:</strong> Grupo <em>n</em> usa <code class="code-inline">192.168.n.0/24</code>.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin: 12px 0 6px 0; color:var(--primary); font-size:0.9rem;">Los 4 Roles dentro de una Subred (/24):</h4>
+            <ul style="font-size:0.85rem; padding-left: 20px; color: var(--text-muted);">
+                <li><code class="code-inline">.0</code> (Ej. 192.168.1.0): <strong>IP de Red</strong> (identifica al grupo, no se asigna a PCs).</li>
+                <li><code class="code-inline">.1</code> (Ej. 192.168.1.1): <strong>Gateway / Firewall</strong> (la puerta hacia otras redes).</li>
+                <li><code class="code-inline">.2 a .254</code>: <strong>IPs de Host</strong> (asignables a PCs, Kali, Windows, servidores).</li>
+                <li><code class="code-inline">.255</code>: <strong>IP de Broadcast</strong> (envía el mensaje a todos a la vez).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FILA 3: CÓMO CONECTARSE AL FIREWALL Y A OTRAS IPS -->
+    <div class="grid">
+        <div class="card">
+            <div class="card-header">
+                <h2>5. Cómo Conectarse al Firewall Físico</h2>
+                <span class="badge badge-trusted">Administración</span>
+            </div>
+            
+            <ol style="font-size:0.85rem; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Conexión Física:</strong> Conecta tu PC al <strong>Puerto 1</strong> del WatchGuard (Interfaz <em>Trusted</em>).</li>
+                <li><strong>Asignar IP fija a tu PC:</strong>
+                    <div class="code-inline" style="display:block; margin: 4px 0;">
+                        IP: 10.0.1.2 | Máscara: 255.255.255.0 | Gateway: 10.0.1.1
+                    </div>
+                </li>
+                <li><strong>Abrir el navegador web:</strong> Entrar a la URL:
+                    <div class="code-inline" style="display:block; margin: 4px 0; color: var(--primary);">
+                        https://10.0.1.1:8080
+                    </div>
+                </li>
+                <li><strong>Credenciales del Taller:</strong>
+                    <br>Usuario: <code class="code-inline">admin</code> | Contraseña: <code class="code-inline">readwrite</code>
+                </li>
+                <li><strong>Si el equipo no responde:</strong> Reiniciar en <em>Modo Seguro</em> manteniendo presionado el botón reset al encender.</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>6. Conectarse a Otras IPs: ¿Qué vemos?</h2>
+                <span class="badge badge-dmz">Capa 4 / 7</span>
+            </div>
+            <p>Si la IP está en <strong>otra zona</strong> (ej. desde Trusted <code class="code-inline">10.0.1.2</code> hacia la DMZ <code class="code-inline">192.168.1.5</code>):</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin: 6px 0;">
+                El paquete viaja al <strong>Gateway (10.0.1.1)</strong>. El firewall revisa sus políticas. Si está permitido, lo que ves en tu pantalla depende del <strong>puerto</strong>:
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Puerto / Servicio</th>
+                        <th>¿Qué vemos en la pantalla?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Puerto 80 / 443</strong> (HTTP/S)</td>
+                        <td>La <strong>página web</strong> del servidor (DVWA, formulario, tienda).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Puerto 22</strong> (SSH)</td>
+                        <td>Una <strong>terminal Linux remota</strong> (pantalla negra pidiendo login).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Puerto 23</strong> (Telnet)</td>
+                        <td>Terminal remota <em>insegura</em> (credenciales en texto plano).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ICMP</strong> (Ping)</td>
+                        <td><code class="code-inline">Reply from 192.168.1.5: bytes=32 time=1ms</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Escaneo Nmap</strong></td>
+                        <td>Listado de qué puertos están abiertos (21, 22, 80, 3306).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- FILA 4: PROTOCOLOS Y RESUMEN PARA EL EXAMEN -->
+    <div class="card" style="margin-bottom: 25px;">
+        <div class="card-header">
+            <h2>7. ¿Qué podemos hacer con los Protocolos?</h2>
+            <span class="badge" style="background:#0ea5e9;">Reglas del Juego</span>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; font-size:0.85rem;">
+            <div style="background:#090d16; padding:12px; border-radius:6px; border:1px solid #1e293b;">
+                <strong style="color:var(--primary);">TCP (Fiabilidad Absoluta):</strong>
+                <p style="color:var(--text-muted); margin-top:4px;">
+                    Hace saludo en 3 vías (SYN, SYN-ACK, ACK). Si se pierde un paquete, se reenvía. Se usa para: Web (80/443), SSH (22), Base de datos MySQL (3306).
+                </p>
+            </div>
+            <div style="background:#090d16; padding:12px; border-radius:6px; border:1px solid #1e293b;">
+                <strong style="color:#a855f7;">UDP (Velocidad Inmediata):</strong>
+                <p style="color:var(--text-muted); margin-top:4px;">
+                    Sin conexión y sin reintentos. Se usa para resolución rápida de nombres (DNS puerto 53) y asignación automática de parámetros de red (DHCP 67/68).
+                </p>
+            </div>
+            <div style="background:#090d16; padding:12px; border-radius:6px; border:1px solid #1e293b;">
+                <strong style="color:var(--trusted);">ICMP (Diagnóstico):</strong>
+                <p style="color:var(--text-muted); margin-top:4px;">
+                    Prueba si el medio físico y el equipo remoto están vivos mediante peticiones de eco (<code class="code-inline">ping</code>).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="callout warning" style="text-align:center;">
+        <strong>Resumen de Oro para el Caso de Mañana:</strong>
+        Web en la <strong>DMZ</strong>, Base de Datos en la red <strong>Trusted</strong>. Tráfico <code class="code-inline">DMZ -> Trusted = DROP</code>. El Firewall siempre es la <code class="code-inline">.1</code>. La política final siempre es <code class="code-inline">Deny All</code>.
+    </div>
+</div>
+
+</body>
+</html>

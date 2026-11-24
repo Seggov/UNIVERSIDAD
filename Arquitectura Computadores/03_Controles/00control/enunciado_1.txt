@@ -1,0 +1,39 @@
+Las palabras de memoria ocupan 16 bits. De esos 16, En la mayoría de las inetrucciones, 4 son para el código (parte OP) de operación y 12 son para una dirección (parte DIR) . Como la instrucción llega a IR, queda cargada como IR(OP) e IR(DIR). Note que cada instrucción ocupa una sola palabra de memoria.
+
+A continuacioón se describen alernativas para el desasrrollo de todos los pasos hardware de cada una de las instrucciones para ejecutar este prgrama, incluido fetch, Además del resultado de la ejecución del porgrama.
+
+Señale todas las alternativas verdaderas.
+
+Por dificultades cpon el editor, se usa ; como separador de instrucciones, tal como en lenguaje C.
+
+eL FETCH (captación queda:)
+
+MAR←PC;MDR←M[MAR];IR←MDR;PC←PC+1
+
+Con esto, en IR(OP) está el código de operación y en IR (DIR) está la dirección asociada.
+
+Pregunta 1Respuesta
+
+1.
+El programa ejecutado deja al final el valor 2733 (decimal) en AX
+
+
+2.
+para la instrucción inc FFE:
+
+MAR←IR(DIR);M[MAR]←M[MAR]+1
+
+
+3.
+para la instrucción LDA FFE, después del fetch:
+
+MAR←IR(DIR);MDR←M[MAR];AX←MDR
+
+
+4.
+Para la instrucción sta FFE, despuésd el fetch:
+MAR←IR(DIR);MDR←AX;M[MAR]←MDR;PC←PC+1
+
+
+5.
+Con la restricción de 12 bits para las direcciones, la máxima dirección es FFF y tanto MAR como PC tienen sólo 12 bits, a pesar que los registros de datos y las palabras de memoria tienen 16 bits.

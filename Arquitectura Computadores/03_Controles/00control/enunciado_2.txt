@@ -1,0 +1,44 @@
+Simuproc carece de llamada a función, como la instrucción CALL en Intel, sin embargo define el stack y sus funciones PUSH(registro) y POP(regiostro)
+
+Sabiendo qur las instrtucción CALL Dirección, donde dirección es la dirección de memoria de la función, que queda guardada en la parte de dirección de iR luego del fetch, dado por:
+
+MAR←PC
+
+MDR←M(MAR)
+
+IR←MDR
+
+PC←PC+1
+
+con estro, el código de operación queda en IR(OP) y la dirección de la función queda en IR(DIR)
+
+Pregunta 2Respuesta
+
+1.
+Para el CALL
+
+PUSH(PC+1)
+
+MAR←IR(DIR)
+
+
+2.
+Para el retorno de la subrutina RET se requiere
+
+POP(PC)
+
+PC←PC+1
+
+
+3.
+Las implementación del retorno RET sería:
+
+POP(PC)
+
+
+4.
+La implementación de la llamada CALL sería
+
+PUSH(PC)
+
+PC←IR(DIR)

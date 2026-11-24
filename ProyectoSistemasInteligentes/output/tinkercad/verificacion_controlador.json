@@ -1,0 +1,789 @@
+{
+  "url": "https://www.tinkercad.com/things/6XiKYRBh2IK/editel",
+  "pruebas": [
+    {
+      "prueba": "Reinicio Q0",
+      "activo": "L1"
+    },
+    {
+      "prueba": "Espera sin inicio",
+      "activo": "L1"
+    },
+    {
+      "prueba": "Inicio Q1",
+      "activo": "L2"
+    },
+    {
+      "prueba": "Preparación Q2",
+      "activo": "L3"
+    },
+    {
+      "prueba": "Espera preparación",
+      "activo": "L3"
+    },
+    {
+      "prueba": "Evaluación Q3",
+      "activo": "L4"
+    },
+    {
+      "prueba": "Sin ronda resuelta no avanza",
+      "activo": "L4"
+    },
+    {
+      "prueba": "Nueva ronda sin ganador",
+      "activo": "L3"
+    },
+    {
+      "prueba": "Evaluación segunda ronda",
+      "activo": "L4"
+    },
+    {
+      "prueba": "Fin con ganador Q4",
+      "activo": "L5"
+    },
+    {
+      "prueba": "Mantiene fin",
+      "activo": "L5"
+    },
+    {
+      "prueba": "Reinicio desde fin",
+      "activo": "L1"
+    }
+  ],
+  "conexionesEsperadas": 117,
+  "conexionesVerificadas": 117,
+  "unionesNoDeseadas": 0,
+  "componentes": {
+    "U1": "id_1a1a48cc739-23-179418c9-51cb-482c-b358-fda3ff3eae23_14",
+    "U2": "id_1a1a48dfd7f-36-b646eda6-9353-45ca-af5d-840992a21dcb_14",
+    "U3": "id_1a1a48e7cc0-49-c876ab4f-9496-403e-aba0-d06d437a1af7_14",
+    "U4": "id_1a1a48f3770-5c-7f7538ce-f616-4688-b575-b1985e44fbe0_14",
+    "U5": "id_1a1a48f76bf-6f-c6ad2b48-baa0-4426-8c02-f875ea74a417_14",
+    "U6": "id_1a1a48fa313-82-8b801adc-8d03-4db2-a6c4-aaa2c1d488b5_14",
+    "U7": "id_1a1a48fb6ab-95-1cc36b40-466e-42ff-8160-6fd8d578fdee_14",
+    "U8": "id_1a1a49012c9-a8-00ebd316-be35-436b-a26b-8d007fd3e0f4_14",
+    "U9": "id_1a1a4902977-bb-be199ec8-d005-47ce-b177-698d4ae493d1_14",
+    "PS": "id_1a1a490544c-ce-3e253a6d-9b87-4952-84ce-5124e3ad41aa_13",
+    "S": "id_1a1a491096d-d5-816ef6d2-423f-444d-9aac-bd92ecf30a30_14",
+    "P": "id_1a1a4918d62-dd-7c138a10-9e5e-482d-b46d-180020a70bc5_14",
+    "F": "id_1a1a49191ed-e5-ae397f3c-6a95-4942-b926-75424d1f60b0_14",
+    "V": "id_1a1a4919680-ed-9fd78b86-1c72-424f-96e9-d0354763fd0b_14",
+    "R": "id_1a1a491b844-f5-f49b4542-fe29-40b9-9d9d-7b7bbe0c9fcb_14",
+    "CLK": "id_1a1a491bc9f-fd-6c9d8347-9ac9-4cd4-91e6-0256dec7ddd3_14",
+    "L1": "id_1a1a491f2ef-105-d76475e4-8dd4-4dec-83d7-3028b6213bb9_14",
+    "L2": "id_1a1a491f7c1-10c-1dff28bd-89a9-4218-8384-efebfab579e8_14",
+    "L3": "id_1a1a491fc99-113-b55daa1e-aa48-45f0-9b0f-b0d6ca57877a_14",
+    "L4": "id_1a1a492015f-11a-63a5ad81-5a12-4bcc-9297-80d31cdd8f4b_14",
+    "L5": "id_1a1a4920622-121-547baf5a-5cb2-4b5f-89f9-c603fb4dff19_14",
+    "RL1": "id_1a1a4921f25-128-135adc0c-3164-47d5-8bf2-ee1707199fd9_14",
+    "RL2": "id_1a1a49223d1-12f-30ff3c63-bf6a-4207-a18b-e20de6915637_14",
+    "RL3": "id_1a1a492291e-136-7ba179c4-c7ab-4f17-a8b9-5eef9069a272_14",
+    "RL4": "id_1a1a4922ec5-13d-2edb575f-36ca-42ca-bddd-19d8df2d4554_14",
+    "RL5": "id_1a1a492337f-144-837b3397-dd76-4c7c-b99f-3bee51811ea0_14",
+    "BB": "id_1a1a496f96e-247-bdf008c9-2e32-41a2-8c7c-f3375dda53a7_13"
+  },
+  "netlist": [
+    [
+      "U1",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U1",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U2",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U2",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U3",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U3",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U4",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U4",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U5",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U5",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U6",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U6",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U7",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U7",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U8",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U8",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U9",
+      "Potencia",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U9",
+      "Tierra",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U1",
+      "Restablecer 1",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U1",
+      "Conjunto 1",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U1",
+      "Restablecer 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U1",
+      "Conjunto 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U2",
+      "Restablecer 1",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U2",
+      "Conjunto 1",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U2",
+      "Restablecer 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U2",
+      "Conjunto 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U2",
+      "Entrada 2",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U2",
+      "Reloj 2",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "S",
+      "Terminal 1",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "S",
+      "Terminal 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "P",
+      "Terminal 1",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "P",
+      "Terminal 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "F",
+      "Terminal 1",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "F",
+      "Terminal 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "V",
+      "Terminal 1",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "V",
+      "Terminal 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "R",
+      "Terminal 1",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "R",
+      "Terminal 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "CLK",
+      "Terminal 1",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "CLK",
+      "Terminal 2",
+      "PS",
+      "Positivo"
+    ],
+    [
+      "U1",
+      "Reloj 1",
+      "CLK",
+      "Común"
+    ],
+    [
+      "U1",
+      "Reloj 2",
+      "CLK",
+      "Común"
+    ],
+    [
+      "U2",
+      "Reloj 1",
+      "CLK",
+      "Común"
+    ],
+    [
+      "U3",
+      "Entrada 1",
+      "U1",
+      "Salida 1"
+    ],
+    [
+      "U3",
+      "Entrada 2",
+      "U1",
+      "Salida 2"
+    ],
+    [
+      "U3",
+      "Entrada 3",
+      "U2",
+      "Salida 1"
+    ],
+    [
+      "U3",
+      "Entrada 4",
+      "F",
+      "Común"
+    ],
+    [
+      "U3",
+      "Entrada 5",
+      "V",
+      "Común"
+    ],
+    [
+      "U3",
+      "Entrada 6",
+      "R",
+      "Común"
+    ],
+    [
+      "U4",
+      "Entrada 1A",
+      "U3",
+      "Salida 3"
+    ],
+    [
+      "U4",
+      "Entrada 1B",
+      "U3",
+      "Salida 2"
+    ],
+    [
+      "U4",
+      "Entrada 1C",
+      "U3",
+      "Salida 1"
+    ],
+    [
+      "U4",
+      "Entrada 2A",
+      "U3",
+      "Salida 3"
+    ],
+    [
+      "U4",
+      "Entrada 2B",
+      "U3",
+      "Salida 2"
+    ],
+    [
+      "U4",
+      "Entrada 2C",
+      "U1",
+      "Salida 1"
+    ],
+    [
+      "U4",
+      "Entrada 3A",
+      "U3",
+      "Salida 3"
+    ],
+    [
+      "U4",
+      "Entrada 3B",
+      "U1",
+      "Salida 2"
+    ],
+    [
+      "U4",
+      "Entrada 3C",
+      "U3",
+      "Salida 1"
+    ],
+    [
+      "U5",
+      "Entrada 1A",
+      "U3",
+      "Salida 3"
+    ],
+    [
+      "U5",
+      "Entrada 1B",
+      "U1",
+      "Salida 2"
+    ],
+    [
+      "U5",
+      "Entrada 1C",
+      "U1",
+      "Salida 1"
+    ],
+    [
+      "U5",
+      "Entrada 2A",
+      "U2",
+      "Salida 1"
+    ],
+    [
+      "U5",
+      "Entrada 2B",
+      "U3",
+      "Salida 2"
+    ],
+    [
+      "U5",
+      "Entrada 2C",
+      "U3",
+      "Salida 1"
+    ],
+    [
+      "U5",
+      "Entrada 3A",
+      "U5",
+      "Salida 1"
+    ],
+    [
+      "U5",
+      "Entrada 3B",
+      "F",
+      "Común"
+    ],
+    [
+      "U5",
+      "Entrada 3C",
+      "V",
+      "Común"
+    ],
+    [
+      "U8",
+      "Entrada 4A",
+      "U3",
+      "Salida 4"
+    ],
+    [
+      "U8",
+      "Entrada 4B",
+      "U3",
+      "Salida 5"
+    ],
+    [
+      "U6",
+      "Entrada 1A",
+      "U5",
+      "Salida 1"
+    ],
+    [
+      "U6",
+      "Entrada 1B",
+      "U8",
+      "Salida 4"
+    ],
+    [
+      "U6",
+      "Entrada 2A",
+      "U4",
+      "Salida 1"
+    ],
+    [
+      "U6",
+      "Entrada 2B",
+      "S",
+      "Común"
+    ],
+    [
+      "U6",
+      "Entrada 3A",
+      "U4",
+      "Salida 3"
+    ],
+    [
+      "U6",
+      "Entrada 3B",
+      "P",
+      "Común"
+    ],
+    [
+      "U6",
+      "Entrada 4A",
+      "U5",
+      "Salida 1"
+    ],
+    [
+      "U6",
+      "Entrada 4B",
+      "U3",
+      "Salida 4"
+    ],
+    [
+      "U8",
+      "Entrada 1A",
+      "U5",
+      "Salida 3"
+    ],
+    [
+      "U8",
+      "Entrada 1B",
+      "U5",
+      "Salida 2"
+    ],
+    [
+      "U8",
+      "Entrada 2A",
+      "U4",
+      "Salida 2"
+    ],
+    [
+      "U8",
+      "Entrada 2B",
+      "U4",
+      "Salida 3"
+    ],
+    [
+      "U8",
+      "Entrada 3A",
+      "U8",
+      "Salida 2"
+    ],
+    [
+      "U8",
+      "Entrada 3B",
+      "U6",
+      "Salida 1"
+    ],
+    [
+      "U9",
+      "Entrada 1A",
+      "U6",
+      "Salida 2"
+    ],
+    [
+      "U9",
+      "Entrada 1B",
+      "U6",
+      "Salida 3"
+    ],
+    [
+      "U9",
+      "Entrada 2A",
+      "U9",
+      "Salida 1"
+    ],
+    [
+      "U9",
+      "Entrada 2B",
+      "U6",
+      "Salida 4"
+    ],
+    [
+      "U7",
+      "Entrada 1A",
+      "U8",
+      "Salida 1"
+    ],
+    [
+      "U7",
+      "Entrada 1B",
+      "U3",
+      "Salida 6"
+    ],
+    [
+      "U7",
+      "Entrada 2A",
+      "U8",
+      "Salida 3"
+    ],
+    [
+      "U7",
+      "Entrada 2B",
+      "U3",
+      "Salida 6"
+    ],
+    [
+      "U7",
+      "Entrada 3A",
+      "U9",
+      "Salida 2"
+    ],
+    [
+      "U7",
+      "Entrada 3B",
+      "U3",
+      "Salida 6"
+    ],
+    [
+      "U2",
+      "Entrada 1",
+      "U7",
+      "Salida 1"
+    ],
+    [
+      "U1",
+      "Entrada 2",
+      "U7",
+      "Salida 2"
+    ],
+    [
+      "U1",
+      "Entrada 1",
+      "U7",
+      "Salida 3"
+    ],
+    [
+      "U7",
+      "Entrada 4A",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U7",
+      "Entrada 4B",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U9",
+      "Entrada 3A",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U9",
+      "Entrada 3B",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U9",
+      "Entrada 4A",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "U9",
+      "Entrada 4B",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "RL1",
+      "Terminal 2",
+      "U4",
+      "Salida 1"
+    ],
+    [
+      "L1",
+      "Ánodo",
+      "RL1",
+      "Terminal 1"
+    ],
+    [
+      "L1",
+      "Cátodo",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "RL2",
+      "Terminal 2",
+      "U4",
+      "Salida 2"
+    ],
+    [
+      "L2",
+      "Ánodo",
+      "RL2",
+      "Terminal 1"
+    ],
+    [
+      "L2",
+      "Cátodo",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "RL3",
+      "Terminal 2",
+      "U4",
+      "Salida 3"
+    ],
+    [
+      "L3",
+      "Ánodo",
+      "RL3",
+      "Terminal 1"
+    ],
+    [
+      "L3",
+      "Cátodo",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "RL4",
+      "Terminal 2",
+      "U5",
+      "Salida 1"
+    ],
+    [
+      "L4",
+      "Ánodo",
+      "RL4",
+      "Terminal 1"
+    ],
+    [
+      "L4",
+      "Cátodo",
+      "PS",
+      "Negativo"
+    ],
+    [
+      "RL5",
+      "Terminal 2",
+      "U5",
+      "Salida 2"
+    ],
+    [
+      "L5",
+      "Ánodo",
+      "RL5",
+      "Terminal 1"
+    ],
+    [
+      "L5",
+      "Cátodo",
+      "PS",
+      "Negativo"
+    ]
+  ]
+}

@@ -1,0 +1,927 @@
+--- Diapositiva 1 ---
+CIENCIA DE DATOS 
+2026 - 02
+CLASE 02 – ANALÍTICA BÁSICA
+Docentes:
+Merary Carrasco Montecino
+Cristhian Rabi Reyes
+
+--- Diapositiva 2 ---
+AGENDA
+• Limpieza de datos
+• Preprocesamiento de datos
+• Estadística descriptiva
+• Calidad de datos
+
+--- Diapositiva 3 ---
+OBJETIVOS
+• Comprender la importancia de los procedimientos de
+entendimiento de los datos
+• Comprender la importancia y utilidad de los procedimientos
+de preprocesamiento de datos
+• Comprender técnicas de limpieza de datos
+• Comprender técnicas de preprocesamiento de datos
+• Repasar conceptos de estadística
+
+--- Diapositiva 4 ---
+CRISP-DM
+Fase II: Data Understanding
+Estudio y comprensión de los datos
+La fase de comprensión de los datos comienza con la 
+colección de datos inicial y continúa con las actividades 
+que permiten familiarizarse con los datos, identificar los 
+problemas de calidad, descubrir conocimiento preliminar 
+sobre los datos, y/o descubrir subconjuntos interesantes 
+para formar hipótesis en cuanto a la información oculta.
+
+--- Diapositiva 5 ---
+CRISP-DM
+Fase III: Data Preparation
+Análisis de los datos y selección de 
+características
+La fase de preparación de datos cubre todas las
+actividades necesarias para construir el conjunto final
+de datos (los datos que se utilizarán en las herramientas
+de modelado) a partir de los datos en bruto iniciales. Las
+tareas incluyen la selección de tablas, registros y
+atributos, así como la transformación y la limpieza de
+datos para las herramientas que modelan.
+
+--- Diapositiva 6 ---
+6
+LIMPIEZA DE 
+DATOS
+Técnicas para el manejo de datos
+
+--- Diapositiva 7 ---
+¿QUÉ ENTENDEMOS POR LIMPIAR LOS DATOS?
+• Proceso mediante el cual preparamos los datos de forma tal
+que maximizamos nuestro entendimiento y posterior utilidad
+a la hora de implementar algún algoritmo de aprendizaje
+automático.
+• Debe ser realizado con cuidado para no introducir sesgos y
+errores adicionales
+• Se busca que los datos representen de forma precisa el
+problema que se quiere resolver
+• Generalmente se requiere conocimiento en el dominio
+específico del problema y el contexto para una limpieza
+efectiva.
+
+--- Diapositiva 8 ---
+PROBLEMAS EN LA CALIDAD DE DATOS
+DATOS 
+FALTANTES
+DATOS 
+DUPLICADOS
+OUTLIERS
+PROBLEMAS 
+DE 
+FORMATO
+
+--- Diapositiva 9 ---
+MANEJO DE DATOS
+Insertar datos faltantes *
+Remover duplicados
+Detectar y manejar outliers *
+Estandarizar formatos de datos
+
+--- Diapositiva 10 ---
+INSERTAR DATOS FALTANTES
+Reemplazo con media, mediana, moda
+FFILL o BFILL
+Estimación con datos adyacentes (interpolación)
+Eliminar el dato (fila)
+Usar dominio del tema
+Otros métodos (estimación con machine learning, etc.)
+
+--- Diapositiva 11 ---
+REEMPLAZAR CON MEDIA, MEDIANA O MODA
+Consiste en reemplazar los valores faltantes en una variable
+con la media, mediana o moda de esta.
+▪ Ventajas:rápido, fácil y no modifica el tamaño de la muestra
+▪ Desventajas:puede empeorar la distribución si los datos
+faltantes no son aleatorios. No es bueno para datos
+categóricos. Nombre Edad
+María 20
+José
+Paco 30
+Luisa 50
+Media: 33.33
+Mediana: 30
+Moda: No hay
+
+--- Diapositiva 12 ---
+BFIL Y FFILL
+Reemplaza los datos faltantes con el dato
+más reciente (forward fill) o el siguiente
+valor observado (backward fill) en el set
+de datos.
+▪ Ventajas: fácil de implementar.
+Funciona bien en datos de series de
+tiempo.
+▪ Desventajas:puede propagar errores si
+datos están mal distribuidos. Puede no
+ser bueno fuera del contexto de series
+de tiempo.
+Nombre Edad Mascota
+María 20 Perro
+José 25
+Paco 30 Gato
+Luisa 50 Conejo
+FFILL: Perro
+BFILL: Gato
+
+--- Diapositiva 13 ---
+INTERPOLACIÓN
+Estimar valores faltantes usando valores
+adyacentes aplicando métodos de
+interpolación. El más básico es la
+interpolación lineal.
+▪ Ventajas: Preserva las tendencias y
+relaciones en los datos. Funciona bien
+en datos de series de tiempo y datos
+continuos.
+▪ Desventajas: Puede funcionar mal en
+datos irregulares. Requiere
+conocimiento de la distribución de los
+datos
+Fecha Valor Var2
+03-09-23 20 100
+04-09-23 25
+08-09-23 30 150
+09-09-23 50 160
+0
+100
+200
+¿110 o 125?
+
+--- Diapositiva 14 ---
+ELIMINAR DATOS
+Elimina casos (filas) que tienen datos
+faltantes o analiza un subconjunto de
+los datos que no tienen datos
+faltantes.
+▪ Ventajas: Simple, mantiene
+integridad de datos
+▪ Desventajas:reduce el tamaño de
+la muestra y puede incluir sesgo si
+es que los datos faltantes no son
+aleatorios.
+Fecha Valor Var2
+03-09-23 20 100
+04-09-23 25
+08-09-23 30 150
+09-09-23 50 160
+
+--- Diapositiva 15 ---
+DOMINIO DEL TEMA
+Llena los datos faltantes utilizando el
+conocimiento específico del tema
+basado en juicio experto o reglas
+específicas.
+▪ Ventajas: Puede dar mejores
+resultados en ámbitos específicos
+▪ Desventajas:requiere dominio en
+un tema, puede no ser aplicable en
+todas las situaciones.
+Ejemplo:
+Podemos intentar 
+estimar el peso de 
+una persona 
+basándonos en la 
+edad, el género y la 
+altura.
+
+--- Diapositiva 16 ---
+OTROS MÉTODOS
+Usar machine learning para generar modelos de predicción
+para los datos faltantes basado en los valores de las otras
+variables.
+Regresiones, árboles de decisión o KNN son técnicas comunes.
+▪ Ventajas: Puede capturar relaciones complejas en los datos.
+Flexible y preciso
+▪ Desventajas: Requiere conocimiento Avanzado y software (o
+Código). Es computacionalmente intensivo.
+
+--- Diapositiva 17 ---
+SOBRE LA LIMPIEZA
+La elección del método de limpieza de datos debe ser realizada
+con cuidado considerando la naturaleza de los datos, la
+pregunta de investigación y el potencial impacto en el análisis.
+Es una buena práctica documentar los métodos utilizados para
+lidiar con los datos faltantes.
+El uso de múltiples métodos es generalmente recomendado
+cuando tratamos con muchos datos faltantes para considerar
+la incertidumbre.
+
+--- Diapositiva 18 ---
+Ejemplo real: ¿qué método de imputación usar?
+Un supermercado registra sus ventas diarias, pero un día el sistema falló 
+y no quedó registro.
+Es una serie de tiempo continua
+Una encuesta de sueldos tiene algunos valores faltantes en 'ingreso
+mensual'.
+
+--- Diapositiva 19 ---
+Ejemplo real: ¿qué método de imputación usar?
+Un supermercado registra sus ventas diarias, pero un día el sistema falló y no 
+quedó registro.
+Es una serie de tiempo continua → conviene FFILL o interpolación, no un
+promedio general.
+Una encuesta de sueldos tiene algunos valores faltantes en 'ingreso mensual'.
+El ingreso es una variable asimétrica (hay sueldos muy altos) → conviene la
+mediana, no la media.
+Regla práctica: si es serie de tiempo, usa ffill/interpolación; si es asimétrica, usa
+mediana.
+
+--- Diapositiva 20 ---
+Selección múltiple
+Un dataset de ventas diarias de una tienda tiene un día con dato faltante. ¿Qué 
+método de imputación es más adecuado?
+a) Eliminar la fila
+b) FFILL o interpolación
+c) Reemplazar con la moda
+d) One Hot Encoding
+
+--- Diapositiva 21 ---
+Verdadero o Falso
+1. El reemplazo con media o mediana es la mejor opción para
+variables categóricas.
+2. Eliminar filas con datos faltantes puede introducir sesgo si
+estos no son aleatorios.
+
+--- Diapositiva 22 ---
+Verdadero o Falso
+1. El reemplazo con media o mediana es la mejor opción para
+variables categóricas. → Falso
+2. Eliminar filas con datos faltantes puede introducir sesgo si
+estos no son aleatorios. → Verdadero
+
+--- Diapositiva 23 ---
+23
+PREPROCESAMIENTO 
+DE DATOS
+
+--- Diapositiva 24 ---
+TRANSFORMACIÓN DE DATOS (ESCALADO)
+Etapa crucial a la hora de hacer analítica avanzada y
+implementar modelos de aprendizaje automático. Se trata de
+transformar los datos en una escala común que sea más
+adecuada.
+¿Por qué buscamos tener una escala común?
+
+--- Diapositiva 25 ---
+MÉTODOS DE TRANSFORMACIÓN
+Normalización
+Estandarización
+Escalado robusto
+Transformación logarítmica
+Escalado de características (TF-IDF)
+Otros (Box-cox, Quantile, etc.)
+
+--- Diapositiva 26 ---
+NORMALIZACIÓN
+• También conocido como Min-Max Scaling, transforma los
+datos en un rango específico. Típicamente, los datos
+quedarán distribuidos entre 0 y 1.
+• Es recomendable en algoritmos que dependen del escalado
+de características como redes neuronales y k-means
+clustering.
+
+--- Diapositiva 27 ---
+NORMALIZACIÓN: EJEMPLO
+X1 X2 Y
+264 8 15
+0 0 0
+495 22 17
+695 35 127
+286 58 163
+749 0 12
+1000 100 190
+190 28 24
+252 38 200
+121 79 37
+X1 X2 Y
+0.264 0.08 0.075
+0 0 0
+0.495 0.22 0.085
+0.695 0.35 0.635
+0.286 0.58 0.815
+0.749 0 0.06
+1 1 0.95
+0.19 0.28 0.12
+0.252 0.38 1
+0.121 0.79 0.185
+
+--- Diapositiva 28 ---
+ESTANDARIZACIÓN
+También conocida como estandarización de media 0. Busca
+transformar los datos para tener media 0 y desviación
+estándar de 1.
+Es particularmente útil en algoritmos como PCA y otros
+modelos que asume que los datos están normalmente
+distribuidos.
+
+--- Diapositiva 29 ---
+ESTANDARIZACIÓN EJEMPLO
+X1 X2 Y
+264 8 15
+0 0 0
+495 22 17
+695 35 127
+286 58 163
+749 0 12
+1000 100 190
+190 28 24
+252 38 200
+121 79 37
+X1 X2 Y
+-0.44334 -0.86127 -0.77915
+-1.27226 -1.10051 -0.9632
+0.281956 -0.44259 -0.75461
+0.909921 -0.05383 0.595101
+-0.37427 0.633987 1.036825
+1.079472 -1.10051 -0.81596
+1.867568 1.889999 1.368118
+-0.67569 -0.26316 -0.66872
+-0.48102 0.035886 1.490819
+-0.89234 1.261993 -0.50921
+X1 X2 Y
+405.2 36.8 78.5
+318.4891 33.43917 81.49881
+
+--- Diapositiva 30 ---
+ESCALADO ROBUSTO
+Funciona igual que la estandarización utilizando la mediana y
+el rango intercuartílico.
+Es robusto a datos atípicos y sirve para manejar datos
+extremos.
+
+--- Diapositiva 31 ---
+TRANSFORMACIÓN LOGARÍTMICA
+▪ Es utilizada para normalizar variables que tienen una
+distribución sesgada/asimétrica.
+▪ Tomar el logaritmo (usualmente natural) de una variable
+contribuye a que se vuelva más simétrica.
+▪ Es comúnmente usada en variables como ingresos, población
+y otras variables con crecimiento exponencial.
+▪ Ejemplos:
+▪ Población de China = 1412000000 = ln(pob)=21.068
+▪ Población de Chile = 19490000 = ln(pob) = 16.78
+▪ Población de Croacia = 3899000 = ln(pob) = 15.17
+
+--- Diapositiva 32 ---
+ESCALADO DE CARACTERÍSTICAS (TF-IDF)
+▪ Utilizado principalmente para el análisis de texto y
+procesamiento de lenguaje natural. Lo veremos en más
+detalle la próxima clase.
+▪ Escala la frecuencia de palabras basado en su importancia en
+un documento o dataset
+
+--- Diapositiva 33 ---
+ELECCIÓN DE MÉTODO
+La elección de método de normalización de datos
+depende de la característica de ellos y los
+requerimientos del análisis o modelo de machine
+learning que estés implementando. La
+experimentación y el entendimiento de las
+distribuciones ocultas de las variables son esenciales
+para seleccionar el modelo más apropiado de
+normalización para cada caso.
+
+--- Diapositiva 34 ---
+Selección múltiple
+Vas a aplicar PCA a un dataset con variables en escalas muy distintas (edad, 
+ingreso, puntaje crediticio). ¿Qué transformación es más recomendable antes de 
+aplicar PCA?
+a) Label Encoding
+b) Dejar los datos como están
+c) One Hot Encoding
+d) Estandarización
+
+--- Diapositiva 35 ---
+Verdadero o Falso
+1. La normalización Min-Max siempre deja los datos en un
+rango entre 0 y 1.
+2. La estandarización es exactamente lo mismo que la
+normalización.
+
+--- Diapositiva 36 ---
+Verdadero o Falso
+1. La normalización Min-Max siempre deja los datos en un
+rango entre 0 y 1. → Verdadero
+2. La estandarización es exactamente lo mismo que la
+normalización. → Falso
+
+--- Diapositiva 37 ---
+37
+ENCODING
+
+--- Diapositiva 38 ---
+ENCODING DE VARIABLES CATEGÓRICAS
+• Entenderemos por encoding el proceso de transformar datos
+categóricos o no-numéricos en valores numéricos para ser
+usados de forma efectiva por modelos de machine learning.
+0.2534
+
+--- Diapositiva 39 ---
+LABEL ENCODING
+Consiste en asignarle un valor único a cada categoría de una
+variable categórica.
+Funciona con variables categóricas ordinales
+Ejemplo:
+▪ Pequeño >>> 1
+▪ Mediano >>> 2
+▪ Grande >>> 3
+
+--- Diapositiva 40 ---
+ERRORES COMUNES
+• Codificación de etiquetas sensibles al orden: Algunos
+algoritmos asumen que las etiquetas tienen un orden
+intrínseco (etiquetas ordinales). Si no es el caso, esto
+puede llevar a resultados incorrectos.
+• Manejo de clases desequilibradas: Si tienes clases
+desequilibradas en tus etiquetas (algunas clases tienen
+muchas más muestras que otras), es importante abordar
+este problema adecuadamente. Ignorar clases minoritarias
+puede llevar a modelos sesgados.
+
+--- Diapositiva 41 ---
+ONE HOT ENCODING (DUMMY ENCODING)
+Convierte cada categoría en un vector binario (0 o 1) indicando
+la presencia o la ausencia de la categoría.
+Funciona bien en variables nominales porque evita asumir la
+existencia de orden en la variable (Perro más importante que
+Gato)
+Color
+Rojo
+Verde
+Azul
+Azul
+Rojo
+Es_Rojo Es_Azul Es_Verde
+1 0 0
+0 0 1
+0 1 0
+0 1 0
+1 0 0
+
+--- Diapositiva 42 ---
+EVITANDO LA MULTICOLINEALIDAD
+Es_Rojo Es_Azul Es_Verde
+1 0 0
+0 0 1
+0 1 0
+0 1 0
+1 0 0
+¿Existe información redundante?
+
+--- Diapositiva 43 ---
+MEAN, FREQUENCY, PROBABILITY ENCODING
+• Consiste en reemplazar la variable categoría por algún valor
+numérico asociado.
+• Mean: Reemplaza variable por el promedio de la variable objetivo
+en el grupo
+• Frecuency: Reemplaza la variable por la frecuencia en la que
+aparece el grupo en el dataset
+• Probability: Reemplaza la categoría por la probabilidad de
+ocurrencia de la clase positiva objetivo (Clasificación binaria)
+
+--- Diapositiva 44 ---
+EJEMPLO
+X1 X2 Y
+Perro 8 15
+Gato 0 0
+Conejo 22 17
+Perro 35 127
+Perro 58 163
+Perro 0 12
+Gato 100 190
+Gato 28 24
+Conejo 38 200
+Gato 79 37
+X1_mean X1_freq
+79.25 4
+62.75 4
+108.5 2
+79.25 4
+79.25 4
+79.25 4
+62.75 4
+62.75 4
+108.5 2
+62.75 4
+
+--- Diapositiva 45 ---
+ENCODING
+▪ La elección del método de encoding dependerá de la
+naturaleza de la variable categórica, el algoritmo usado y el
+problema en específico que queremos resolver.
+▪ Es esencial considerar el desempeño del algoritmo y el
+preprocesamiento con cuidado.
+▪ Adicionalmente, manejar categorías raras o nunca antes
+vistas son consideraciones importantes en la práctica
+
+--- Diapositiva 46 ---
+Ejemplo real: codificando variables categóricas
+Nivel educacional: Básica, Media, Técnico, Universitario, Postgrado.
+Es ordinal (hay una jerarquía)
+Región: Coquimbo, Valparaíso, Metropolitana, Biobío...
+Es nominal (no hay orden natural)
+
+--- Diapositiva 47 ---
+Ejemplo real: codificando variables categóricas
+Nivel educacional: Básica, Media, Técnico, Universitario, Postgrado.
+Es ordinal (hay una jerarquía) → Label Encoding tiene sentido (0,1,2,3,4).
+Región: Coquimbo, Valparaíso, Metropolitana, Biobío...
+Es nominal (no hay orden natural) → conviene One Hot Encoding.
+Usar Label Encoding en 'Región' haría pensar al modelo que Metropolitana >
+Coquimbo, lo cual no tiene sentido.
+
+--- Diapositiva 48 ---
+Selección múltiple
+Tienes la variable 'talla de polerón': XS, S, M, L, XL. ¿Qué técnica de 
+encoding es más apropiada?
+a) Label Encoding respetando el orden
+b) One Hot Encoding
+c) Mean Encoding
+d) Ignorar la variable
+
+--- Diapositiva 49 ---
+Verdadero o Falso
+1. El One Hot Encoding es recomendable para variables
+nominales porque evita asumir un orden que no existe.
+2. El Label Encoding funciona igual de bien tanto en variables
+ordinales como nominales.
+
+--- Diapositiva 50 ---
+Verdadero o Falso
+1. El One Hot Encoding es recomendable para variables
+nominales porque evita asumir un orden que no existe. →
+Verdadero
+2. El Label Encoding funciona igual de bien tanto en variables
+ordinales como nominales. → Falso
+
+--- Diapositiva 51 ---
+51
+DETECCIÓN DE 
+OUTLIERS
+Detección y manejo de datos atípicos
+
+--- Diapositiva 52 ---
+OUTLIER
+“Un valor atípico es una observación que se encuentra a una
+distancia anormal de otros valores en una muestra aleatoria de
+una población. En cierto sentido, esta definición deja en manos
+del analista (o de un proceso de consenso) decidir qué se
+considerará anormal. Antes de poder identificar las
+observaciones anormales, es necesario caracterizar las
+observaciones normales.”
+NIST (National Institute of Standards and Technology, US)
+
+--- Diapositiva 53 ---
+ORIGEN
+Errores de entrada de datos: los errores humanos, como los errores causados durante la recopilación, el 
+registro o la entrada de datos, pueden provocar valores atípicos en los datos.
+Error de medición (errores del instrumento): es la fuente más común de valores atípicos. Esto se produce 
+cuando el instrumento de medición utilizado resulta defectuoso.
+Errores experimentales (extracción de datos o errores de planificación/ejecución de experimentos)
+Intencional (valores atípicos ficticios creados para probar métodos de detección)
+Errores de procesamiento de datos (manipulación de datos o mutaciones no deseadas del conjunto de datos)
+Errores de muestreo (extraer o mezclar datos de fuentes incorrectas o diversas)
+Valor atípico natural (no es un error, dato especial): cuando un valor atípico no es artificial (debido a un 
+error), es un valor atípico natural. La mayoría de los datos del mundo real pertenecen a esta categoría.
+
+--- Diapositiva 54 ---
+DETECCIÓN DE OUTLIERS
+• Inspección visual
+• Z-score
+• IQR
+• Otros:
+• Winsorization Method
+• DBSCAN Clustering
+• PCA
+
+--- Diapositiva 55 ---
+Z-SCORE
+Utilizando el mismo método que
+la estandarización.
+Definimos un umbral: Todas las
+observaciones con valores
+mayores a 3 y menores a -3 son
+considerados outliers.
+
+--- Diapositiva 56 ---
+IQR
+Este método considera que cualquier valor fuera de un rango
+determinado será un outlier. Este rango se calcula
+generalmente como 1.5 veces el rango intercuartílico. Que es
+la diferencia entre el Cuartil 1 (Q1) y el tercer cuartil (Q3)
+Límite inferior = Q1 -1.5IQR
+Límite superior = Q3 + 1.5IQR
+
+--- Diapositiva 57 ---
+IQR: EJEMPLO
+Una encuesta se le entregó a una muestra aleatoria de estudiantes de 
+tercer año de Ingeniería. Se les preguntó, “¿Cuántos libros 
+universitarios tienes?” Las respuestas fueron: 0, 0, 2, 5, 8, 8, 8, 9, 9, 
+10, 10, 10, 11, 12, 12, 12, 14, 15, 20, 25.
+• Mediana = 10 Q1 = 8 Q3 = 12
+• IQR = 12-8 =4
+• 1.5 IQR = 6
+• Límite inferior = 8-6 =2
+• Límite superior = 12+6 = 18
+• Outliers:0,0,20,25
+IQR
+
+--- Diapositiva 58 ---
+VISUALIZACIÓN
+Fuente: analytics-vidhya
+
+--- Diapositiva 59 ---
+VISUALIZACIÓN
+
+--- Diapositiva 60 ---
+VISUALIZACIÓN
+Fuente: analytics-vidhya
+
+--- Diapositiva 61 ---
+VISUALIZACIÓN
+Fuente: analytics-vidhya
+
+--- Diapositiva 62 ---
+TRATAMIENTO DE OUTLIERS
+DESCUBRÍ OUTLIERS EN MIS DATOS,¿AHORA QUÉ?
+• Eliminar outliers
+• Transformar los datos
+• Reemplazar los datos
+• Dejarlos ahí (no recomendado!!)(solo si se usan métodos
+robustos o son datos relevantes)
+
+--- Diapositiva 63 ---
+¿POR QUÉ?
+• Los valores atípicos (outliers) afectan gravemente la media y la
+desviación estándar del conjunto de datos. Estos pueden dar
+resultados estadísticamente erróneos.
+• Aumenta la varianza del error y reduce el poder de las pruebas
+estadísticas.
+• Si los valores atípicos (outliers) no se distribuyen aleatoriamente,
+pueden disminuir la normalidad.
+• La mayoría de los algoritmos de aprendizaje automático no
+funcionan bien en presencia de valores atípicos. Por eso es deseable
+detectar y eliminar valores atípicos.
+• También pueden afectar los supuestos básicos de regresión, ANOVA
+y otros supuestos del modelo estadístico.
+
+--- Diapositiva 64 ---
+Ejemplo real: outliers en sueldos
+En una empresa, la mayoría de los sueldos está entre $500.000 y $1.500.000, 
+pero el gerente general gana $12.000.000.
+Con Q1 = $600.000 y Q3 = $1.200.000, el IQR es $600.000.
+
+--- Diapositiva 65 ---
+Ejemplo real: outliers en sueldos
+En una empresa, la mayoría de los sueldos está entre $500.000 y $1.500.000, 
+pero el gerente general gana $12.000.000.
+Con Q1 = $600.000 y Q3 = $1.200.000, el IQR es $600.000.
+Límite superior = Q3 + 1.5×IQR = $2.100.000 → el sueldo del gerente es outlier.
+¿Es un error? No, es un outlier natural (dato real). Antes de eliminarlo hay que
+entender su origen.
+
+--- Diapositiva 66 ---
+Selección múltiple
+Usando el ejemplo de los libros universitarios (Q1=8, Q3=12), 
+¿cuál es el límite superior para detectar outliers?
+a) 12
+b) 14
+c) 18
+d) 20
+
+--- Diapositiva 67 ---
+Verdadero o Falso
+1. Un outlier siempre corresponde a un error de medición o de
+digitación.
+2. El método IQR es más robusto ante datos extremos que el z-
+score en distribuciones no normales.
+
+--- Diapositiva 68 ---
+Verdadero o Falso
+1. Un outlier siempre corresponde a un error de medición o de
+digitación. → Falso
+2. El método IQR es más robusto ante datos extremos que el z-
+score en distribuciones no normales. → Verdadero
+
+--- Diapositiva 69 ---
+69
+ESTADÍSTICA 
+DESCRIPTIVA
+
+--- Diapositiva 70 ---
+MEDIA ARITMÉTICA
+• Medida estadística que representa el valor promedio de un
+conjunto de datos
+Característica importante: NO es robusta
+
+--- Diapositiva 71 ---
+MEDIANA
+Medida estadística que representa el valor central de un
+conjunto de datos cuando se ordena de menor a mayor.
+Cuando la cantidad (n) es impar:
+Cuando la cantidad (n) es par
+
+--- Diapositiva 72 ---
+MODA
+Medida estadística que representa el valor o valores que
+aparecen con mayor frecuencia en un conjunto de datos.
+Si en el conjunto hay más de una moda decimos que el
+conjunto de datos es multimodal.
+¿Puede no haber moda?
+La moda no siempre es única, puede haber una, varias o
+ninguna.
+
+--- Diapositiva 73 ---
+DIFERENCIA MEDIA, MEDIANA, MODA
+X Y
+2 2
+10 3
+15 4
+20 5
+20 6
+40 7
+80 8
+Media = 26.71 
+Mediana = 20
+Moda = 20
+
+--- Diapositiva 74 ---
+VARIANZA
+Medida estadística que representa la dispersión o la
+variabilidad de un conjunto de datos. Mide cuánto se alejan los
+valores individuales del valor medio del conjunto de datos.
+La varianza mide como puntos individuales del dataset se
+desvían de la media del set de datos. Se usa para medir la
+dispersión de los datos.
+
+--- Diapositiva 75 ---
+DESVIACIÓN ESTÁNDAR
+Medida estadística que representa la dispersión o variabilidad
+de un conjunto de datos. Es la raíz cuadrada de la varianza y
+se utiliza para medir cuánto se alejan los valores individuales
+del valor medio del conjunto de datos.
+
+--- Diapositiva 76 ---
+RANGO
+Se refiere a la diferencia entre el valor máximo y el valor
+mínimo en un conjunto de datos. Es una medida simple de la
+dispersión de los datos y proporciona información sobre la
+amplitud o alcance de los valores en el conjunto de datos.
+
+--- Diapositiva 77 ---
+CUARTILES
+Los cuartiles son medidas estadísticas que dividen un conjunto de 
+datos en cuatro partes iguales, representando así la distribución y 
+dispersión de los valores. Los tres cuartiles más comunes son:
+1.Primer Cuartil (Q1): El valor que separa el 25% inferior de los datos 
+del 75% superior. Es el valor por debajo del cual se encuentra el 25% 
+más bajo de los datos.
+2.Segundo Cuartil (Q2): Es equivalente a la mediana. Divide los 
+datos en dos partes iguales, con el 50% de los valores por encima y 
+el 50% por debajo. Es el valor en medio de la distribución cuando los 
+datos se ordenan de menor a mayor.
+3.Tercer Cuartil (Q3): El valor que separa el 75% inferior de los datos 
+del 25% superior. Es el valor por debajo del cual se encuentra el 25% 
+más alto de los datos.
+
+--- Diapositiva 78 ---
+RANGO INTERCUARTÍLICO
+
+--- Diapositiva 79 ---
+VISUALIZACIÓN
+▪ La visualización de las variables y sus relaciones es muy
+importante en la etapa exploratoria y de analítica básica.
+▪ Utilizaremos boxplots, histogramas para datos de una
+dimensión
+▪ Utilizaremos generalmente scatterplots para ver la relación
+entre pares de variables.
+▪ Importancia ya revisada en clase anterior.
+
+--- Diapositiva 80 ---
+Selección múltiple
+En un conjunto de datos con un valor atípico muy alto, ¿qué 
+medida de tendencia central lo representa mejor?
+a) Media
+b) Rango
+c) Mediana
+d) Desviación estándar
+
+--- Diapositiva 81 ---
+Verdadero o Falso
+1. La moda siempre es única en cualquier conjunto de datos.
+2. La desviación estándar es la raíz cuadrada de la varianza.
+
+--- Diapositiva 82 ---
+Verdadero o Falso
+1. La moda siempre es única en cualquier conjunto de datos.
+→ Falso
+2. La desviación estándar es la raíz cuadrada de la varianza.
+→ Verdadero
+
+--- Diapositiva 83 ---
+83
+CALIDAD DE DATOS
+
+--- Diapositiva 84 ---
+CALIDAD DE DATOS
+Desde el punto de vista de la gestión de datos tenemos:
+• Completitud: Proporción o representatividad de los datos
+• Unicidad: ¿Está cada instancia de los datos solo una vez?
+• Temporalidad: ¿Representa la realidad en el momento
+requerido?
+• Validez: ¿Es válido en formato, tipo y rango?
+• Precisión: ¿Representa la realidad?
+• Consistencia: ¿Son consistentes respecto al fenómeno?
+DAMA, 2013
+
+--- Diapositiva 85 ---
+DIMENSIONES ADICIONALES
+• Usabilidad: ¿Es entendible, relevante y útil?
+• Problemas de temporalidad: ¿Es posible responder a
+cambios de requisitos de forma estable?
+• Flexibilidad: ¿Es fácil de manipular? ¿Es compatible con
+otros datos?
+• Confiabilidad: ¿está verificado o es verificable?
+• Valor: ¿es positiva la relación costo/beneficio?¿es ético?
+DAMA, 2013
+
+--- Diapositiva 86 ---
+CONSECUENCIAS DE NO LIMPIAR DATOS
+Riesgos
+Éticos
+De las personas
+Económicos
+Financieros
+Etc…
+
+--- Diapositiva 87 ---
+Ejemplo real: auditando una base de clientes
+Una tienda revisa su base de clientes antes de construir un modelo de 
+recomendación:
+15% de los emails están vacíos
+200 clientes aparecen con el mismo RUT repetido
+Muchas direcciones no se actualizan hace 5 años
+
+--- Diapositiva 88 ---
+Ejemplo real: auditando una base de clientes
+Una tienda revisa su base de clientes antes de construir un modelo de 
+recomendación:
+15% de los emails están vacíos → problema de completitud.
+200 clientes aparecen con el mismo RUT repetido → problema de unicidad.
+Muchas direcciones no se actualizan hace 5 años → problema de temporalidad.
+Antes de modelar, hay que auditar estas dimensiones: datos duplicados pueden
+hacer que el modelo sobreestime patrones.
+
+--- Diapositiva 89 ---
+Selección múltiple
+Una base de datos tiene al mismo cliente registrado 3 veces 
+con RUTs idénticos. ¿Qué dimensión de calidad de datos está 
+comprometida?
+a) Validez
+b) Unicidad
+c) Usabilidad
+d) Temporalidad
+
+--- Diapositiva 90 ---
+Verdadero o Falso
+1. La validez se refiere a si el dato cumple con el formato, tipo
+y rango esperado.
+2. La completitud mide si los datos están actualizados en el
+momento requerido.
+
+--- Diapositiva 91 ---
+Verdadero o Falso
+1. La validez se refiere a si el dato cumple con el formato, tipo
+y rango esperado. → Verdadero
+2. La completitud mide si los datos están actualizados en el
+momento requerido. → Falso (eso es temporalidad)
+
+--- Diapositiva 92 ---
+92
+CONCLUSIONES
+
+--- Diapositiva 93 ---
+CONCLUSIONES
+LIMPIEZA
+PREPROCESAMIENTO
+ANALÍTICA DESCRIPTIVA
+CALIDAD
+
+--- Diapositiva 94 ---
+¿PREGUNTAS?
+
+--- Diapositiva 95 ---
+CIENCIA DE DATOS 
+2026 - 02
+CLASE 02 – ANALÍTICA BÁSICA
+Docentes:
+Merary Carrasco Montecino
+Cristhian Rabi Reyes

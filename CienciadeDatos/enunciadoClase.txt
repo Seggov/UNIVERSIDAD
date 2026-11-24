@@ -1,0 +1,28 @@
+1. Supongamos que tenemos 50 documentos de la clase "Política", 50 de clase "Deporte" y 50 de "Internacional". Es decir, de esos 150, cada uno tiene su clase respectiva.
+Queremos implementar un sistema clasificador de documentos que permita clasificar entre esas 3 clases. Por ejemplo llega un documento nuevo y queremos clasificarlo en Politica, Deporte o Internacional.
+¿Qué haría?
+
+2. ¿Cómo podemos interpretar los pesos aprendidos en una regresión lineal?
+
+3. ¿Cómo podemos interpretar los pesos aprendidos en una regresión lineal?
+
+Por ejemplo tenemos
+
+y = .... + x1 * w1 + ....
+
+qué significa w1?
+
+qué significa que w1 valga 0
+
+qué significa que w1 valga 2 u otro valor?
+
+en qué se traduce esa "importancia"?
+
+tiene que ver con hacer un dx
+
+Matriz de confusión
+
+
+
+
+

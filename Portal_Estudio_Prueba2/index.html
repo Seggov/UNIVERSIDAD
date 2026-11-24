@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Visual de Estudio · Prueba 2 (Lun 23 al Lun 30 Nov)</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-logo">P2</div>
+        <div>
+          <h1>Portal Visual de Estudio · Lunes 23 al Lunes 30 de Noviembre</h1>
+          <p>25 bloques de 60 min · Explicaciones simples, diagramas interactivos, guías de dibujo y enunciados oficiales</p>
+        </div>
+      </div>
+
+      <div class="top-tools">
+        <button class="btn-sm" id="openMasterBtn" style="padding:0.42rem 0.8rem;font-weight:700;border-color:#38bdf8;color:#bae6fd;">📅 Ver Tabla Horaria Completa</button>
+
+        <div class="prog-pill">
+          <span id="progText">0 / 25 bloques</span>
+          <div class="prog-bar-wrap"><div class="prog-bar-fill" id="progFill"></div></div>
+        </div>
+
+        <div class="timer-box" title="Reloj de bloque estricto de 60 minutos">
+          <span class="timer-display" id="timerDisplay">60:00</span>
+          <button class="btn-sm" id="timerStart">▶ Iniciar</button>
+          <button class="btn-sm" id="timerReset">↺</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ESTRUCTURA PRINCIPAL -->
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="side-title">Calendario por Día</div>
+        <div class="day-list" id="dayList"></div>
+      </div>
+
+      <div>
+        <div class="side-title">Filtrar por Curso</div>
+        <div class="course-filters">
+          <button class="filter-chip active" data-course="all">Todos (Por día)</button>
+          <button class="filter-chip" data-course="arqui">Arquitectura (5)</button>
+          <button class="filter-chip" data-course="edd">Estructura C++ (7)</button>
+          <button class="filter-chip" data-course="ciber">Ciberseguridad (2)</button>
+          <button class="filter-chip" data-course="cd">Ciencia Datos (11)</button>
+        </div>
+      </div>
+
+      <div style="font-size:0.76rem;color:#94a3b8;border-top:1px solid #334155;padding-top:0.75rem;">
+        <strong>Tu método en cada bloque:</strong><br/>
+        1. Lee la idea simple.<br/>
+        2. Juega con el diagrama visual.<br/>
+        3. Haz el dibujo guía en tu cuaderno con tus palabras.<br/>
+        4. Resuelve el enunciado y marca ✅.
+      </div>
+    </aside>
+
+    <main class="content-area" id="mainContent"></main>
+  </div>
+
+  <!-- MODAL TABLA MAESTRA DE DÍAS Y HORAS -->
+  <div class="modal-backdrop" id="scheduleModal">
+    <div class="modal-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;">
+        <h3 style="margin:0;color:#38bdf8;">📅 Tabla Maestra de Días y Horas (Lunes 23 al Lunes 30)</h3>
+        <button class="btn-sm" id="closeMasterBtn">✕ Cerrar</button>
+      </div>
+      <table class="clean-tbl">
+        <tr><th>Día</th><th>Mañana</th><th>Mediodía (Almuerzo)</th><th>Tarde</th><th>Ocio</th></tr>
+        <tr><td><strong>Lun 23</strong> (4 blq)</td><td>09:00–10:00 Arqui #1<br/>10:30–11:30 Arqui #2</td><td>11:30–14:30 Almuerzo</td><td>14:30–15:30 EDD #1<br/>16:00–17:00 CD #1</td><td>17:00+</td></tr>
+        <tr><td><strong>Mar 24</strong> (6 blq)</td><td>09:00–10:00 Arqui #3<br/>10:30–11:30 Arqui #4<br/>12:00–13:00 EDD #2</td><td>13:00–15:00 Almuerzo</td><td>15:00–16:00 EDD #3<br/>16:30–17:30 CD #2<br/>18:30–19:30 <strong>Arqui #5 (movido)</strong></td><td>19:30+</td></tr>
+        <tr><td><strong>Mié 25</strong> (3 blq)</td><td>Sin bloques · <strong>10:00 PRUEBA ARQUI</strong></td><td>11:45–14:30 Almuerzo</td><td>14:30–15:30 EDD #4<br/>16:00–17:00 EDD #5<br/>17:30–18:30 CD #3</td><td>18:30+</td></tr>
+        <tr><td><strong>Jue 26</strong> (2 blq)</td><td>09:30–10:30 EDD #6 (Simulacro)<br/>11:00–12:00 EDD #7 (≤13:00)</td><td>12:00–16:15 Almuerzo y calma</td><td><strong>16:15 PRUEBA ESTRUCTURA C++</strong><br/>Sin bloques post-prueba</td><td>17:45+</td></tr>
+        <tr><td><strong>Vie 27</strong> (5 blq)</td><td>09:00–10:00 CD #4 (C06)<br/>10:30–11:30 CD #5 (C07)<br/>12:00–13:00 CD #6 (C08)</td><td>13:00–15:00 Almuerzo</td><td>15:00–16:00 Ciber #1 (SIEM/SOC)<br/>16:30–17:30 Ciber #2 (ZTA)</td><td>17:30+</td></tr>
+        <tr><td><strong>Sáb 28</strong> (1 blq)</td><td>Sin bloques · <strong>08:00 PRUEBA CIBER</strong></td><td>09:30–15:00 Descanso largo</td><td>15:00–16:00 CD #7 (C09 Redes)</td><td>16:00+</td></tr>
+        <tr><td><strong>Dom 29</strong> (4 blq)</td><td>09:30–10:30 CD #8 (Casos)<br/>11:00–12:00 CD #9 (Mapa C01–C09)</td><td>12:00–14:30 Almuerzo</td><td>14:30–15:30 CD #10 (Simulacro)<br/>16:00–17:00 CD #11 (Cierre)</td><td>17:00+</td></tr>
+        <tr><td><strong>Lun 30</strong> (0 blq)</td><td>Sin bloques · <strong>11:40 PRUEBA CD</strong></td><td>—</td><td>¡Fin de las pruebas!</td><td>Tarde libre</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SCRIPTS LOCALES (100% COMPATIBLES CON DOBLE CLIC FILE:// SIN SERVIDOR) -->
+  <script src="js/widgets.js"></script>
+  <script src="js/days_schedule.js"></script>
+  <script src="js/blocks_lun_mar.js"></script>
+  <script src="js/blocks_mie_jue_vie.js"></script>
+  <script src="js/blocks_sab_dom_lun.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

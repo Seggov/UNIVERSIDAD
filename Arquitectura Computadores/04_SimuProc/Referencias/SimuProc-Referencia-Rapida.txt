@@ -1,0 +1,237 @@
+--- PAGE 1 ---
+Quickref - SimuProc (versi ´on: 1 de junio de 2016) 1
+Descripci´ on
+Esta es una gu ´ıa de referencia rapida de las instrucciones
+del programa SimuProc, no es un reemplazo de la documen-
+taci´on del programa.
+Formato utilizado
+XX INSTRUCCI ´ON [param] — Descripci ´on.
+Expresi´on resumida.
+XX es el n ´umero de instrucci ´on.
+INST es el nombre de la instrucci ´on.
+param puede ser 1:
+• mem una direcci´on de memoria (hexademial).
+• reg un registro.
+• dest un registro o direcci ´on memoria de destino.
+• orig un registro o direcci ´on memoria de origen.
+• msg un mensaje para la pantalla.
+• n para indicar un n ´umero natural.
+• puerto, para instrucciones de entrada/salida.
+Nomenclatura
+Pseudoc´odigo:
+X←Y := Asignar a X el valor de Y.
+@X := Valor contenido en X.
+X ⇀↽ Y := Intercambiar los valores de X e Y.
+X≪N := Empujar N bits a izquierda,
+completando con ceros a derecha .
+X←↩ N := Empujar N bits a izquierda,
+completando con los bits empujados a derecha .
+¬X := Negar el contenido de X .
+Registros y variables del procesador
+Ax Acumulador.
+Bx Proposito general, lectura/escritura de vectores.
+Cx Contador, bucles.
+Flags Banderas asociadas a la ultima operaci ´on de la ALU.
+Z (Zero) Resultado 0.
+N (Negative) Resultado negativo.
+C (Carry) Resultado con acarreo.
+O (Overﬂow) Resultado con desbordamiento.
+PC Contador de programa: Direcci ´on de memoria de la pro-
+xima instrucci´on a ejecutar.
+SP Puntero de pila: Direcci ´on de memoria del tope de pila.
+BP Inicio de la pila: A partir de que direcci ´on de memoria
+se construye la pila.
+MAR Registro de Direcci ´on de Memoria. Direcci ´on del dato a
+leer o escribir por la instrucci ´on.
+MDR Registro de Datos de Memoria. Registro del CPU conec-
+tado al bus de datos.
+IR Registro de Instrucci ´on. La instrucci´on siendo ejecutada.
+Instrucciones
+Acumulador
+01 LDA [ mem] — Cargar Ax de memoria.
+Ax←@mem
+02 STA [ mem] — Almacenar Ax en memoria.
+@mem←Ax
+03 XBA — Intercambiar Ax y Bx.
+Ax ⇀↽ Bx
+04 CLA — Limpiar el valor de Ax, o asignarle 0.
+Ax←0
+Uso general
+06 PUSH [ reg] — Apilar el valor del registro.
+@SP←reg; SP←SP−1.
+07 POP [ reg] — Quitar el tope, guardarlo en un registro.
+reg←@SP ; SP←SP + 1.
+08 INC [ dest] — Incrementa en 1.
+INC Ax == Ax←Ax + 1.
+09 DEC [ dest] — Decrementa en 1.
+DEC Ax == Ax←Ax−1.
+10 MOV [ dest, orig] — Copiar orig en dest.
+dest←orig.
+11 AND [ dest, orig] — Conjunci ´on l´ogica (Y).
+dest←dest∧orig.
+12 NOT [ dest] — Negaci ´on l´ogica (No).
+dest←¬dest.
+13 OR [ dest, orig] — Disyunci ´on l´ogica (O).
+dest←dest∨orig.
+14 XOR [ dest, orig] — Disyunci ´on l´ogica exclusiva ( ´O).
+dest←dest∨orig.
+15 ROL [ dest, n] — Rotaci ´on a izquierda.
+dest←dest←↩ n.
+16 ROR [ dest, n] — Rotaci ´on a derecha.
+dest←dest ,→n.
+17 SHL [ dest, n] — Desplazamiento a izquierda.
+dest←dest≪n.
+18 SHR [ dest, n] — Desplazamiento a derecha.
+dest←dest≫n.
+1par´ametros separados por coma. En el orden es obligatorio.
+--- PAGE 2 ---
+Quickref - SimuProc (versi ´on: 1 de junio de 2016) 2
+Aritm´ etica de Punto Fijo
+20 ADD [ mem] — Suma a Ax.
+Ax←Ax + @mem.
+21 SUB [ mem] — Resta a Ax.
+Ax←Ax−@mem.
+22 MUL [ mem] — Multiplica Ax. Si el n ´umero es muy gran-
+de (O = 1)se usa Bx para la parte m ´as signiﬁcativa.
+Ax←Ax×@mem.
+23 DIV [ mem] — Divide a Ax, y guarda el resto en Bx.
+Ax←Ax/@mem; Bx←Ax %@mem.
+24 CLN — Asignar 0 a la variable Negative.
+N←0.
+25 CLC — Asignar 0 a la variable Carry.
+C←0.
+26 STC — Asignar 1 a la variable Carry.
+C←0.
+27 CMC — Complementar la variable Carry.
+C←¬C.
+Saltos y Bucles
+29 LOOP [ mem] — Decrementar Cx y saltar a la direcci ´on
+indicada si Cx no es 0.
+Cx←Cx−1 S´ıCx⁄= 0⇒P C←mem.
+30 JMP [ mem] — Saltar a la direcci ´on de memoria.
+P C←mem.
+31 JEQ [ mem] — Saltar si es igual (Z=1)
+P C←mem S´ıZ = 1.
+32 CMP [ mem] — Compara Ax con el valor almacenado
+en la direcci ´on de memoria.
+Actualiza los valores Z, N, C, O.
+Ejecuta Ax−@mem.
+33 JME [ mem] — Saltar Ax es menor.
+P C←mem S´ıZ = 0∧N = 1.
+34 JMA [ mem] — Saltar Ax es mayor.
+P C←mem S´ıZ = 0∧N = 0.
+35 JC [ mem] — Saltar si hay acarreo.
+P C←mem S´ıC = 1.
+36 JNC [ mem] — Saltar si NO hay acarreo.
+P C←mem S´ıC = 0.
+37 JO [ mem] — Saltar si hay desbordamiento.
+P C←mem S´ıO = 1.
+38 JNO [ mem] — Saltar si NO hay desbordamiento.
+P C←mem S´ıC = 0.
+Entrada/Salida - C´ aracteres
+40 LDT — Leer Ax desde el teclado.
+Ax←T eclado.
+41 EAP [ msg] — Escribe en pantalla el mensaje y el con-
+tenido de Ax.
+P antalla←msg, Ax.
+42 MSG [ msg] — Escribe en pantalla un mensaje.
+P antalla←msg.
+Lectura secuencial de memoria
+50 LDB [ mem] — Cargar en Ax el valor almacenado en la
+direcci´on mem+Bx.
+Ax←@(mem + Bx).
+51 STB [ mem] — Almacenar el valor de Ax en la direcci ´on
+de memoria mem+Bx.
+@(mem + Bx)←Ax.
+Aritm´ etica de Punto Flotante
+55 LDF [ mem] — Cargar 32 bits de memoria.
+(Bx, Ax)←(@mem, @mem + 1).
+56 STF [ mem] — Almacena 32 bits de memoria.
+(@mem, @mem + 1)←(Bx, Ax).
+60 ADDF [ mem] — Incrementa ( Bx, Ax) con
+(@mem, @mem + 1).
+(Bx, Ax)←(Bx, Ax) + (@mem, @mem + 1).
+61 SUBF [ mem] — Decrementa ( Bx, Ax) con
+(@mem, @mem + 1). para CMP de Pto. Flotante
+(Bx, Ax)←(Bx, Ax)−(@mem, @mem + 1).
+62 MULF [ mem] — Multiplica ( Bx, Ax) por
+(@mem, @mem + 1).
+(Bx, Ax)←(Bx, Ax)×(@mem, @mem + 1).
+63 DIVF [ mem] — Divide ( Bx, Ax) por (@mem, @mem+
+1).
+(Bx, Ax)←(Bx, Ax)/(@mem, @mem + 1); Cx ←
+Residuo.
+64 ITOF — De Punto Fijo a Punto Flotante.
+(Bx, Ax)←P untoF lotante(Ax).
+65 FTOI [ mem] — De Punto Flotante a Punto Fijo.
+Ax←P untoF ijo(Bx, Ax).
+Actualiza los valores de Z, N, O.
+Entrada/Salida - Puertos
+80 IN [ reg, puerto] — Almacenar en un registro la siguien-
+te lectura del puerto indicadoLeer del puerto indicado.
+reg←@puerto. 1: Teclado, 8: Reloj.
+81 OUT [ puerto, reg] — Escribir el contenido de un regis-
+tro en el puerto indicado.
+puerto←@reg. 1: Pantalla.
+Otras
+90 NOP — Instrucci ´on Nula. ´Util para anular instrucciones
+en tiempo de ejecuci ´on.
+91 HLT — Fin de programa. Todo programa debe terminar.
+xx #[ mem] — (Editor) Forzar la direcci ´on de memoria don-
+de se escribe el resto del texto. Comentario.
+xx ; msg — (Editor) Agregar un comentario al c ´odigo.
+--- PAGE 3 ---
+Quickref - SimuProc (versi ´on: 1 de junio de 2016) 3
+Mnem´ onicos
+LDA: LoaD (Cargar) A=Registro Ax.
+STA: STore (Guardar) A.
+XBA: eXchange (Intercambiar), B=Registro Bx
+CLA: CLear (Limpiar) A.
+PUSH: PUSH (Empujar).
+POP: POP (”Sacar de arriba”).
+INC: INCRement (Incrementar).
+DEC: DECrement (Decrementar).
+MOV: MOVe (Mover).
+AND: AND (Y).
+NOT: NOT (No).
+OR: OR (O).
+XOR: eXclusive OR (O exclusivo, ´O).
+ROL: ROtate Left (Rotar a Iquierda).
+ROR: ROtate Right (Rotar a Derecha).
+SHL: SHift Left (Desplazar a Izquierda).
+SHR: SHift Right (Desplazar a Derecha).
+ADD: ADD (Sumar).
+SUB: SUBstract (Substraer).
+MUL: MULtiply (Multiplicar).
+DIV: DIVide (Dividir).
+CLN: CLear N (Negative).
+CLC: CLear C (Carry).
+STC: STore C.
+CMC: CoMplement (Complementar) C.
+LOOP: LOOP (Bucle)
+JMP: JuMP (Saltar).
+JEQ: Jump (Saltar) s ´ı EQual (Igual).
+CMP: CoMPare (Comparar).
+JME: Jump s´ı MEnor.
+JMA: Jump s´ı MAyor.
+JC: Jump s´ı C (en C=1).
+JNC: Jump s´ı Not C (en C=0).
+JO: Jump s´ı O (Overﬂow) (en O=1).
+JNO: Jump s´ı Not O (en O=0).
+LDT: Leer De Teclado.
+EAP: Escribir Ax en Pantalla.
+MSG: MeSsaGe (Mensaje).
+LDB: LoaD B (para Vectores).
+STB: STore B (para Vectores).
+LDF: LoaD Float (N ´umero de punto ﬂotante).
+STF: STore Float.
+ADDF: ADD Float.
+SUBF: SUBstract Float.
+MULF: MULtiply Float.
+DIVF: DIVide Float.
+ITOF: Integer (Entero) TO (a) Float.
+FTOI: Float TO Integer.
+IN: IN (Entrada).
+OUT: OUT (Salida).
+NOP: Null OPeration (Operaci ´on Nula).
+HLT: Halt (Detenerse).

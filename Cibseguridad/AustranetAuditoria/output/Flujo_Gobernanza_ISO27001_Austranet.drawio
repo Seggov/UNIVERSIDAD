@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="MacroflujoLimpio" name="Macroflujo Ordenado ISO 27001">
+    <mxGraphModel dx="2000" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="FASE 1: INGESTA Y CLASIFICACIÓN" style="swimlane;startSize=35;horizontal=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontStyle=1;fontSize=13;fontColor=#2D3748;rounded=1;dashed=0;strokeWidth=1.5;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="40" width="520" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="FASE 2: PROTOCOLOS DE DETECCIÓN Y ACCESO" style="swimlane;startSize=35;horizontal=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontStyle=1;fontSize=13;fontColor=#2D3748;rounded=1;dashed=0;strokeWidth=1.5;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="610" y="40" width="360" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="FASE 3: OFFBOARDING Y RETENCIÓN" style="swimlane;startSize=35;horizontal=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontStyle=1;fontSize=13;fontColor=#2D3748;rounded=1;dashed=0;strokeWidth=1.5;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="40" width="360" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="FASE 4: SALIDAS Y EVIDENCIAS ISO 27001" style="swimlane;startSize=35;horizontal=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontStyle=1;fontSize=13;fontColor=#2D3748;rounded=1;dashed=0;strokeWidth=1.5;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="40" width="360" height="800" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="&lt;b&gt;📥 DATASET MAESTRO (CSV)&lt;/b&gt;&lt;br/&gt;&lt;code&gt;exportUsers_2026-10-28.csv&lt;/code&gt;&lt;br/&gt;&lt;hr style='margin:4px 0;'/&gt;• 495 Cuentas Microsoft Entra ID&lt;br/&gt;• UserType: 189 Member / 306 Guest&lt;br/&gt;• Actividad de login y roles admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF8FF;strokeColor=#3182CE;strokeWidth=2;fontColor=#1A365D;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="370" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="&lt;b&gt;ENRUTADOR&lt;br/&gt;CENTRAL&lt;/b&gt;&lt;br/&gt;&lt;small&gt;Clasificación&lt;br/&gt;por atributos&lt;/small&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#805AD5;strokeWidth=2;fontColor=#44337A;fontStyle=1;fontSize=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="360" width="180" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;🛡️ PROTOCOLO 5: MFA Roles Críticos&lt;/b&gt;&lt;br/&gt;• Censo de 15 roles administrativos&lt;br/&gt;• Verificación política en modo Enforce&lt;br/&gt;• &lt;b&gt;Exclusión explícita de Break-Glass&lt;/b&gt;&lt;br/&gt;&lt;small style='color:#4A5568;'&gt;ISO 27001: A.5.17 / A.8.2&lt;/small&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF8FF;strokeColor=#2B6CB0;strokeWidth=2;fontColor=#1A365D;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="90" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="&lt;b&gt;⚡ PROTOCOLO 1: Cuentas Nuevas (5d)&lt;/b&gt;&lt;br/&gt;• Exclusión de cuentas de servicio (6)&lt;br/&gt;• Alerta a jefatura al día 3 hábil&lt;br/&gt;• &lt;b&gt;Bloqueo al día 5 sin inicio de sesión&lt;/b&gt;&lt;br/&gt;&lt;small style='color:#4A5568;'&gt;Población: 11 sin login | ISO A.5.16&lt;/small&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEFCBF;strokeColor=#D69E2E;strokeWidth=2;fontColor=#744210;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="240" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="&lt;b&gt;⏳ PROTOCOLO 2: Inactividad &amp;gt; 60 Días&lt;/b&gt;&lt;br/&gt;• Cuarentena lógica a los 30 días&lt;br/&gt;• Notificación preventiva día 50&lt;br/&gt;• &lt;b&gt;Bloqueo formal + Revocar sesiones día 60&lt;/b&gt;&lt;br/&gt;&lt;small style='color:#4A5568;'&gt;Población: 53 inactivas | ISO A.5.15&lt;/small&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FED7D7;strokeColor=#E53E3E;strokeWidth=2;fontColor=#742A2A;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="390" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="&lt;b&gt;🌐 PROTOCOLO 4: Ciclo de Vida Guests&lt;/b&gt;&lt;br/&gt;• 117 sin canje: revocar invitaciones &amp;gt; 30d&lt;br/&gt;• 101 inactivos &amp;gt; 60d: baja directa sin buzón&lt;br/&gt;• 79 activos: recertificación periódica&lt;br/&gt;&lt;small style='color:#4A5568;'&gt;Población: 306 invitados | ISO A.5.19&lt;/small&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDF2F7;strokeColor=#718096;strokeWidth=2;fontColor=#2D3748;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="560" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="&lt;b&gt;📦 PROTOCOLO 3: Offboarding &amp;amp; Retención&lt;/b&gt;&lt;br/&gt;• &lt;b&gt;Paso 1:&lt;/b&gt; Convertir buzón a Shared Mailbox&lt;br/&gt;• &lt;b&gt;Paso 2:&lt;/b&gt; Respaldar / delegar OneDrive&lt;br/&gt;• &lt;b&gt;Paso 3:&lt;/b&gt; Desasignar licencias de pago M365&lt;br/&gt;• &lt;b&gt;Paso 4:&lt;/b&gt; Espera de retención legal (60 días)&lt;br/&gt;• &lt;b&gt;Paso 5:&lt;/b&gt; Evaluar borrado final en Entra ID&lt;br/&gt;&lt;small style='color:#4A5568;'&gt;Población: 46 bloqueadas | ISO A.8.10&lt;/small&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9D8FD;strokeColor=#6B46C1;strokeWidth=2;fontColor=#44337A;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="310" width="320" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="&lt;b&gt;📧 1. NOTIFICACIONES &amp;amp; ALERTAS&lt;/b&gt;&lt;br/&gt;• Correo preventivo a jefaturas (días 3 y 50)&lt;br/&gt;• Alerta de seguridad por uso de Break-Glass&lt;br/&gt;• Aviso formal de cuenta bloqueada" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEFCBF;strokeColor=#D69E2E;strokeWidth=2;fontColor=#744210;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="120" width="320" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="&lt;b&gt;☁️ 2. ACCIONES CLOUD (Graph / M365)&lt;/b&gt;&lt;br/&gt;• &lt;code&gt;accountEnabled: false&lt;/code&gt; ejecutado&lt;br/&gt;• Tokens de sesión revocados en Graph&lt;br/&gt;• Buzón compartido activo sin costo de licencia&lt;br/&gt;• Eliminación definitiva de cuentas purgadas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EBF8FF;strokeColor=#3182CE;strokeWidth=2;fontColor=#1A365D;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="340" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="&lt;b&gt;📁 3. EVIDENCIAS ISO 27001 (GRC)&lt;/b&gt;&lt;br/&gt;• Matriz actualizada de identidades (9.1)&lt;br/&gt;• Trazabilidad de excepciones y justificaciones&lt;br/&gt;• Expedientes listos para Auditoría Interna (9.2)&lt;br/&gt;• Registro histórico en SharePoint / AustranetGRC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FFF4;strokeColor=#38A169;strokeWidth=2;fontColor=#22543D;fontSize=11;align=left;spacingLeft=12;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1430" y="560" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="495 cuentas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#4A5568;fontSize=11;fontColor=#4A5568;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="6" target="7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="Roles Admin" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2B6CB0;fontSize=11;fontColor=#2B6CB0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="7" target="8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="Sin Login (11)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#D69E2E;fontSize=11;fontColor=#D69E2E;exitX=1;exitY=0.2;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="7" target="9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="Inactivos &gt;60d (53)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E53E3E;fontSize=11;fontColor=#E53E3E;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="7" target="10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="Guests (306)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#718096;fontSize=11;fontColor=#718096;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="7" target="11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="Bloqueadas (46)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6B46C1;fontSize=11;fontColor=#6B46C1;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="7" target="12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="Al bloquear" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#D69E2E;fontSize=11;fontColor=#D69E2E;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="9" target="12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="Al bloquear" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#E53E3E;fontSize=11;fontColor=#E53E3E;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="10" target="12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="Alerta Break-Glass" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2B6CB0;fontSize=11;fontColor=#2B6CB0;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="8" target="13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="MFA Conforme" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#2B6CB0;fontSize=11;fontColor=#2B6CB0;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.1;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="8" target="15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="Aviso día 3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#D69E2E;fontSize=11;fontColor=#D69E2E;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.7;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="9" target="13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="Ejecutar Offboarding" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#6B46C1;fontSize=11;fontColor=#6B46C1;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="12" target="14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="Expediente de Baja" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#38A169;fontSize=11;fontColor=#38A169;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="12" target="15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="Purga de Externos" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#718096;fontSize=11;fontColor=#718096;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;dashed=0;" edge="1" parent="1" source="11" target="14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

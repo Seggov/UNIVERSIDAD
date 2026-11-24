@@ -1,0 +1,28 @@
+# Archivos pesados que superan o rozan limites de GitHub
+**/transactions_train.csv
+Arquitectura Computadores/Arquitectura Computadores.rar
+
+# Metadatos y bloqueos locales de KNIME
+**/.metadata/
+**/.recommenders/
+**/.knimeLock
+**/*.lock
+
+# Binarios compilados de C/C++ y depuracion
+*.exe
+*.o
+*.obj
+*.out
+*.pdb
+*.ilk
+*.idb
+
+# Cache de Python
+**/__pycache__/
+*.py[cod]
+
+# Temporales de IDE y sistema operativo
+.vs/
+Thumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,404 @@
+import os
+
+html_content = """<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Austranet · Macroflujo de Gobernanza de Identidades (ISO 27001)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .protocol-card { transition: all 0.2s ease-in-out; }
+    .protocol-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen p-6 md:p-10">
+
+  <div class="max-w-7xl mx-auto space-y-8">
+    
+    <!-- HEADER -->
+    <header class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-3 py-1 bg-blue-100 text-blue-700 font-semibold text-xs rounded-full uppercase tracking-wider">Austranet · UCN Ciberseguridad</span>
+          <span class="px-3 py-1 bg-emerald-100 text-emerald-700 font-semibold text-xs rounded-full uppercase tracking-wider">ISO/IEC 27001:2022</span>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-bold text-slate-900">Arquitectura y Macroflujo de Identidades</h1>
+        <p class="text-slate-500 text-sm mt-1">Automatización de políticas SGSI-POL-04, PRO-06 y PRO-07 sobre Microsoft Entra ID</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="text-right">
+          <div class="text-xs text-slate-400 font-medium">Dataset de Entrada</div>
+          <div class="text-sm font-bold text-slate-700">495 usuarios auditados</div>
+        </div>
+        <div class="h-10 w-px bg-slate-200"></div>
+        <button onclick="window.print()" class="px-4 py-2 bg-slate-900 text-white rounded-xl text-sm font-semibold hover:bg-slate-800 transition flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Exportar / Imprimir
+        </button>
+      </div>
+    </header>
+
+    <!-- NAVEGACIÓN DE VISTAS -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-3" id="tabNav">
+      <button onclick="switchTab('macro')" id="tab-macro" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-blue-600 text-white shadow-sm">
+        🌟 1. Vista Macro (Inputs & Outputs)
+      </button>
+      <button onclick="switchTab('p1')" id="tab-p1" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+        ⚡ P1: Cuentas Nuevas (5d) <span class="ml-1 px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-xs">11</span>
+      </button>
+      <button onclick="switchTab('p2')" id="tab-p2" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+        ⏳ P2: Inactivos &gt; 60d <span class="ml-1 px-2 py-0.5 bg-rose-100 text-rose-700 rounded-full text-xs">53</span>
+      </button>
+      <button onclick="switchTab('p3')" id="tab-p3" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+        📦 P3: Offboarding & Baja <span class="ml-1 px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full text-xs">46</span>
+      </button>
+      <button onclick="switchTab('p4')" id="tab-p4" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+        🌐 P4: Invitados Guests <span class="ml-1 px-2 py-0.5 bg-slate-200 text-slate-700 rounded-full text-xs">306</span>
+      </button>
+      <button onclick="switchTab('p5')" id="tab-p5" class="tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200">
+        🛡️ P5: MFA Privilegiados <span class="ml-1 px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-xs">15 Roles</span>
+      </button>
+    </div>
+
+    <!-- CONTENEDOR VISTA 1: MACROFLUX (ARQUITECTURA DE ALTO NIVEL) -->
+    <div id="view-macro" class="space-y-8">
+      
+      <!-- INPUT MAESTRO -->
+      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-dashed border-blue-300 rounded-2xl p-6 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-bold uppercase mb-2">
+          📥 Input Maestro del Sistema
+        </div>
+        <h3 class="text-lg font-bold text-slate-800">Dataset de Microsoft Entra ID (495 usuarios exportados)</h3>
+        <p class="text-sm text-slate-600 max-w-2xl mx-auto mt-1">
+          Campos evaluados: <code class="bg-white px-1.5 py-0.5 rounded border text-blue-800 font-mono text-xs">userPrincipalName</code>, 
+          <code class="bg-white px-1.5 py-0.5 rounded border text-blue-800 font-mono text-xs">userType</code>, 
+          <code class="bg-white px-1.5 py-0.5 rounded border text-blue-800 font-mono text-xs">accountEnabled</code>, 
+          <code class="bg-white px-1.5 py-0.5 rounded border text-blue-800 font-mono text-xs">signInActivity.lastSuccessfulSignInDateTime</code> y roles de administración.
+        </p>
+      </div>
+
+      <!-- FLECHA HACIA ENRUTADOR -->
+      <div class="flex justify-center -my-4">
+        <div class="bg-white p-2 rounded-full border border-slate-300 shadow-sm text-slate-400">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+      </div>
+
+      <!-- ENRUTADOR CENTRAL -->
+      <div class="bg-white border-2 border-indigo-500 rounded-2xl p-6 shadow-md max-w-3xl mx-auto text-center">
+        <div class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Motor de Decisión y Enrutamiento</div>
+        <h4 class="text-xl font-extrabold text-slate-900 mt-1">Orquestador de Gobernanza de Cuentas</h4>
+        <p class="text-xs text-slate-500 mt-1">Clasifica el universo de cuentas y lo enruta al protocolo especializado correspondiente</p>
+      </div>
+
+      <!-- GRILLA DE PROTOCOLOS (SUBGRAFOS BORDERED) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+
+        <!-- CARD P1 -->
+        <div class="protocol-card bg-white border-2 border-amber-300 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="px-2.5 py-1 bg-amber-100 text-amber-800 font-bold text-xs rounded-lg">PROTOCOLO 1</span>
+              <span class="text-xs font-semibold text-slate-400">ISO A.5.16 / A.5.18</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">Cuentas Nuevas sin Uso</h4>
+            <p class="text-xs text-slate-500 mt-1">Regla de los 5 días hábiles (PRO-07). Detección preventiva y bloqueo por no ingreso inicial.</p>
+            <div class="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-200">
+              <div class="text-xs font-semibold text-amber-900">Población CSV:</div>
+              <div class="text-lg font-bold text-amber-700">11 cuentas sin login</div>
+              <div class="text-[11px] text-amber-800 mt-1">5 usuarios persona + 6 servicios/admin a excluir.</div>
+            </div>
+          </div>
+          <button onclick="switchTab('p1')" class="mt-4 w-full py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs font-bold transition">
+            Ver Subflujo Detallado →
+          </button>
+        </div>
+
+        <!-- CARD P2 -->
+        <div class="protocol-card bg-white border-2 border-rose-300 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="px-2.5 py-1 bg-rose-100 text-rose-800 font-bold text-xs rounded-lg">PROTOCOLO 2</span>
+              <span class="text-xs font-semibold text-slate-400">ISO A.5.15 / A.5.16</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">Inactividad &gt; 60 Días</h4>
+            <p class="text-xs text-slate-500 mt-1">Cuentas habilitadas sin uso prolongado (PRO-06/PRO-07). Cuarentena a 30d y bloqueo formal.</p>
+            <div class="mt-4 p-3 bg-rose-50 rounded-xl border border-rose-200">
+              <div class="text-xs font-semibold text-rose-900">Población CSV:</div>
+              <div class="text-lg font-bold text-rose-700">53 cuentas inactivas</div>
+              <div class="text-[11px] text-rose-800 mt-1">Candidatas inmediatas a bloqueo justificado.</div>
+            </div>
+          </div>
+          <button onclick="switchTab('p2')" class="mt-4 w-full py-2 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-xs font-bold transition">
+            Ver Subflujo Detallado →
+          </button>
+        </div>
+
+        <!-- CARD P3 -->
+        <div class="protocol-card bg-white border-2 border-purple-300 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="px-2.5 py-1 bg-purple-100 text-purple-800 font-bold text-xs rounded-lg">PROTOCOLO 3</span>
+              <span class="text-xs font-semibold text-slate-400">ISO A.5.18 / A.8.10</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">Offboarding & Eliminación</h4>
+            <p class="text-xs text-slate-500 mt-1">Cuentas bloqueadas $\ge$ 60 días. Respaldo OneDrive, buzón compartido y retiro de licencias.</p>
+            <div class="mt-4 p-3 bg-purple-50 rounded-xl border border-purple-200">
+              <div class="text-xs font-semibold text-purple-900">Población CSV:</div>
+              <div class="text-lg font-bold text-purple-700">46 cuentas en cuarentena</div>
+              <div class="text-[11px] text-purple-800 mt-1">Listas para desasignar licencias y depurar.</div>
+            </div>
+          </div>
+          <button onclick="switchTab('p3')" class="mt-4 w-full py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold transition">
+            Ver Subflujo Detallado →
+          </button>
+        </div>
+
+        <!-- CARD P4 -->
+        <div class="protocol-card bg-white border-2 border-slate-300 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="px-2.5 py-1 bg-slate-200 text-slate-800 font-bold text-xs rounded-lg">PROTOCOLO 4</span>
+              <span class="text-xs font-semibold text-slate-400">ISO A.5.19</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">Gobernanza de Guests</h4>
+            <p class="text-xs text-slate-500 mt-1">Cuentas externas de terceros. Purga de invitaciones no aceptadas e inactivos sin buzón.</p>
+            <div class="mt-4 p-3 bg-slate-100 rounded-xl border border-slate-300">
+              <div class="text-xs font-semibold text-slate-800">Población CSV:</div>
+              <div class="text-lg font-bold text-slate-700">306 usuarios externos</div>
+              <div class="text-[11px] text-slate-600 mt-1">117 sin uso y 101 inactivos &gt; 60 días.</div>
+            </div>
+          </div>
+          <button onclick="switchTab('p4')" class="mt-4 w-full py-2 bg-slate-800 hover:bg-slate-900 text-white rounded-xl text-xs font-bold transition">
+            Ver Subflujo Detallado →
+          </button>
+        </div>
+
+        <!-- CARD P5 -->
+        <div class="protocol-card bg-white border-2 border-blue-400 rounded-2xl p-6 shadow-sm flex flex-col justify-between md:col-span-2 lg:col-span-2">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <span class="px-2.5 py-1 bg-blue-100 text-blue-800 font-bold text-xs rounded-lg">PROTOCOLO 5 (TRANSVERSAL)</span>
+              <span class="text-xs font-semibold text-slate-400">ISO A.5.17 / A.8.2</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base">Control de MFA en Roles Administrativos</h4>
+            <p class="text-xs text-slate-500 mt-1">Auditoría sobre los 15 roles críticos de Entra ID. Exclusión de Break-Glass y verificación de política activa (Enforce).</p>
+            <div class="mt-4 grid grid-cols-2 gap-4">
+              <div class="p-3 bg-blue-50 rounded-xl border border-blue-200">
+                <div class="text-xs font-semibold text-blue-900">Roles bajo control:</div>
+                <div class="text-lg font-bold text-blue-700">15 Roles Privilegiados</div>
+              </div>
+              <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200">
+                <div class="text-xs font-semibold text-emerald-900">Cuentas Emergencia:</div>
+                <div class="text-lg font-bold text-emerald-700">Break-Glass Separadas</div>
+              </div>
+            </div>
+          </div>
+          <button onclick="switchTab('p5')" class="mt-4 w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition">
+            Ver Subflujo Detallado →
+          </button>
+        </div>
+
+      </div>
+
+      <!-- FLECHA HACIA OUTPUTS -->
+      <div class="flex justify-center -my-2">
+        <div class="bg-white p-2 rounded-full border border-slate-300 shadow-sm text-slate-400">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </div>
+      </div>
+
+      <!-- OUTPUTS GLOBALES -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">📤 Salidas Globales Unificadas (Resultados)</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-4 bg-slate-50 border rounded-xl">
+            <div class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span> Acciones en la Nube
+            </div>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5 list-disc list-inside">
+              <li><code>accountEnabled: false</code> ejecutado</li>
+              <li>Sesiones activas revocadas</li>
+              <li>Buzón convertido a compartido</li>
+              <li>Licencias liberadas (Ahorro)</li>
+              <li>Cuentas purgadas sin dependencias</li>
+            </ul>
+          </div>
+          <div class="p-4 bg-slate-50 border rounded-xl">
+            <div class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Notificaciones & Alertas
+            </div>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5 list-disc list-inside">
+              <li>Aviso preventivo a jefaturas (Día 3 y 50)</li>
+              <li>Notificación de bloqueo formal</li>
+              <li>Alerta por uso de cuenta Break-Glass</li>
+              <li>Ticket de confirmación de offboarding</li>
+            </ul>
+          </div>
+          <div class="p-4 bg-slate-50 border rounded-xl">
+            <div class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Evidencia ISO 27001
+            </div>
+            <ul class="text-xs text-slate-600 mt-2 space-y-1.5 list-disc list-inside">
+              <li>Matriz de identidades actualizada</li>
+              <li>Registro trazable en AustranetGRC</li>
+              <li>Expediente de control de auditoría interna</li>
+              <li>Cumplimiento de Cláusulas 9.1 y 9.2</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- VISTA DETALLE: P1 -->
+    <div id="view-p1" class="hidden space-y-6">
+      <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-amber-900">Protocolo 1: Cuentas Nuevas sin Uso Inicial (Regla 5 días)</h3>
+        <p class="text-sm text-amber-800 mt-1">Basado en <code>SGSI-PRO-07</code> (sec. 9.2 y 9.5). Resuelve el riesgo de cuentas aprovisionadas que nunca ingresaron.</p>
+      </div>
+      <div class="bg-white border rounded-2xl p-6 space-y-4">
+        <h4 class="font-bold text-slate-900">Pasos Técnicos del Subflujo:</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">1. Filtrado de Excepciones</div>
+            <p class="text-slate-600">Revisar si es cuenta de servicio (ej. <code>soporte.grc</code>, <code>adadmin</code>). Si es servicio, registrar excepción y excluir de bloqueo.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">2. Alerta Día 3-4 Hábiles</div>
+            <p class="text-slate-600">Notificar automáticamente a la jefatura que solicitó la cuenta recordando que al 5to día será bloqueada si no inicia sesión.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">3. Bloqueo al Día 5</div>
+            <p class="text-slate-600">Si se cumplen 5 días hábiles sin login ni ticket de prórroga: ejecutar <code>accountEnabled = false</code> y revocar sesiones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISTA DETALLE: P2 -->
+    <div id="view-p2" class="hidden space-y-6">
+      <div class="bg-rose-50 border border-rose-200 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-rose-900">Protocolo 2: Inactividad Prolongada &gt; 60 Días</h3>
+        <p class="text-sm text-rose-800 mt-1">Basado en <code>SGSI-PRO-06</code> (sec. 9.5). Identifica colaboradores activos que llevan meses sin autenticarse.</p>
+      </div>
+      <div class="bg-white border rounded-2xl p-6 space-y-4">
+        <h4 class="font-bold text-slate-900">Pasos Técnicos del Subflujo:</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">1. Cuarentena Día 30-59</div>
+            <p class="text-slate-600">Cargar la cuenta en lista de monitoreo preventiva de SharePoint. Enviar preaviso a la jefatura al día 50.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">2. Validación de Justificación</div>
+            <p class="text-slate-600">Verificar si existe licencia médica prolongada, proyecto especial o excepción formal aprobada por RRHH/CISO.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">3. Bloqueo al Día &ge; 60</div>
+            <p class="text-slate-600">Sin justificación: desactivar cuenta, revocar tokens de sesión y estampar fecha de bloqueo para inicio de offboarding.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISTA DETALLE: P3 -->
+    <div id="view-p3" class="hidden space-y-6">
+      <div class="bg-purple-50 border border-purple-200 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-purple-900">Protocolo 3: Offboarding Seguro y Eliminación</h3>
+        <p class="text-sm text-purple-800 mt-1">Basado en el diagrama de Franco y <code>SGSI-PRO-07</code>. Protege la información antes de la baja de licencias y borrado.</p>
+      </div>
+      <div class="bg-white border rounded-2xl p-6 space-y-4">
+        <h4 class="font-bold text-slate-900">Pasos Técnicos del Subflujo:</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">1. Respaldo y Buzón Compartido</div>
+            <p class="text-slate-600">Convertir el buzón a Shared Mailbox en Exchange antes de quitar la licencia. Delegar acceso al OneDrive si hay archivos corporativos.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">2. Desasignación de Licencias</div>
+            <p class="text-slate-600">Retirar licencias de Microsoft 365 para optimizar costos mientras el buzón compartido sigue funcionando sin costo.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">3. Evaluación de Eliminación (Día 60)</div>
+            <p class="text-slate-600">Si sustenta un buzón compartido: mantener cuenta bloqueada. Si no tiene dependencias: ejecutar borrado formal en Entra ID.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISTA DETALLE: P4 -->
+    <div id="view-p4" class="hidden space-y-6">
+      <div class="bg-slate-100 border border-slate-300 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-slate-900">Protocolo 4: Ciclo de Vida de Invitados (Guests)</h3>
+        <p class="text-sm text-slate-700 mt-1">Aplica sobre el 62% del directorio de Austranet (306 cuentas). Permite depuración ágil sin proceso de buzón.</p>
+      </div>
+      <div class="bg-white border rounded-2xl p-6 space-y-4">
+        <h4 class="font-bold text-slate-900">Pasos Técnicos del Subflujo:</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">1. Invitaciones no Aceptadas (117 cuentas)</div>
+            <p class="text-slate-600">Si una invitación de externo supera 30 días sin canje: revocar y eliminar automáticamente.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">2. Inactividad Externa &gt; 60/90 días (101 cuentas)</div>
+            <p class="text-slate-600">Deshabilitar la cuenta invitada y avisar al sponsor interno de Austranet. Si no se recertifica en 30 días, eliminar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VISTA DETALLE: P5 -->
+    <div id="view-p5" class="hidden space-y-6">
+      <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-blue-900">Protocolo 5: MFA en Roles Administrativos</h3>
+        <p class="text-sm text-blue-800 mt-1">Cumplimiento de <code>SGSI-POL-04</code> (sec. 9.7 y 9.8). Protección estricta sobre los 15 roles administrativos.</p>
+      </div>
+      <div class="bg-white border rounded-2xl p-6 space-y-4">
+        <h4 class="font-bold text-slate-900">Pasos Técnicos del Subflujo:</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">1. Censo de los 15 Roles</div>
+            <p class="text-slate-600">Identificar todos los usuarios asignados a Global Admin, Security Admin, Exchange Admin, etc.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">2. Auditoría de Acceso Condicional</div>
+            <p class="text-slate-600">Validar en Graph API que la directiva exige MFA obligatorio y que NO se encuentra en modo Report-Only.</p>
+          </div>
+          <div class="border rounded-xl p-4 bg-slate-50">
+            <div class="font-bold text-slate-800 mb-1">3. Cuentas Break-Glass</div>
+            <p class="text-slate-600">Excluir las cuentas de emergencia de la purga por inactividad, pero auditar con alerta en tiempo real cualquier inicio de sesión.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      const views = ['macro', 'p1', 'p2', 'p3', 'p4', 'p5'];
+      views.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        const btn = document.getElementById('tab-' + v);
+        if (v === tabId) {
+          el.classList.remove('hidden');
+          btn.className = 'tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-blue-600 text-white shadow-sm';
+        } else {
+          el.classList.add('hidden');
+          btn.className = 'tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+"""
+
+out_file = "output/diagrama_gobernanza_interactivo.html"
+with open(out_file, "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print(f"Archivo interactivo generado exitosamente en: {out_file}")

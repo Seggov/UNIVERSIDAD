@@ -1,0 +1,453 @@
+TRANSCRIPCIÓN DE LA REUNIÓN AUSTRANET–UCN
+Fecha del video: 28 de octubre de 2026
+Fuente: https://www.youtube.com/watch?v=VoWXarYd_w8
+Duración del video: 01:07:24
+
+Texto obtenido de la transcripción disponible en YouTube. Se conserva su contenido, incluidas repeticiones y posibles errores de reconocimiento de nombres y términos técnicos. No se ha cotejado palabra por palabra con el audio. Las marcas indican el inicio de cada segmento. La fuente no identifica a los hablantes.
+
+[00:00:02] Creo que podía haberlo hecho más rápido.
+[00:00:05] Parece que hay una forma ahí de de exportar la definición de la política.
+[00:00:28] Ya, esos son los roles que están en la política.
+[00:00:40] Parece que si veo acá parece que no hay una forma de verla
+[00:00:49] access como de exportar la definición de la política. No se puede. Pensé que Ah, aquí está.
+[00:00:59] ¿Quién es Jason? va a venir la definición completa.
+[00:01:09] Te da el geoid de la política que qué es
+[00:01:16] el nombre, cuándo fue crejado la última fecha modificación
+[00:01:23] y ahí están los geidr no está el nombre.
+[00:01:33] se hubiera servido.
+[00:01:38] No impuesto, voy a eliminar. Ahí les pase la la definición de la política.
+[00:01:47] Lo que sí
+[00:01:58] no incluye todas las aplicaciones. Es decir, que cualquier aplicación que intente iniciar sesión alguno de los usuarios con esos roles le va a pedir el MFA.
+[00:02:09] Requiere el MFA.
+[00:02:19] en la política. Disculpa, ¿qué dice con respecto a los usuarios sin inicio de sesión? un un last login.
+[00:02:31] Respecto a los que nunca iniciaron sesión, aquí se nos dice de que el control obligatorio
+[00:02:39] es de 5 días hábiles y que el responsable debe confirmar necesidad o en su caso eliminar o deshabilitar.
+[00:02:51] Ya. ¿Y eso, ¿cómo lo interpretas tú en base a esa definición? ¿Cómo lo
+[00:02:58] interpreta? A ver, dame un ejemplo de cómo se aplicaría en ese caso la política.
+[00:03:13] Bueno, em al menos esto yo también lo,
+[00:03:21] o sea, lo interpreto también utilizando una definición de eh la otra par documento anterior
+[00:03:29] que se nos dice de que al menos las cuentas como inactivas por más de 60 días deben revisarse y de no ser
+[00:03:37] justificada, eliminarse o deshabilitarse.
+[00:03:41] E en si lo que al menos lo que me da a entender acá es que si se llega a ver que hay una cuenta que que no se está
+[00:03:50] usando, tiene que pasar por el respectivo periodo de verificación de que por qué no se está usando, de que a
+[00:03:58] qué permisos tenía, eh, qué es lo que por qué se creó también.
+[00:04:06] Y dado eso, ya se ve si primero se deshabilita, cosa que por los
+[00:04:13] procedimientos eh que salen acá anotados veo que es lo primero que se hace y luego ya pasado del tiempo, si ya de
+[00:04:21] verdad no se usa para nada, ya se debe eliminar. Eso es más que nada lo que entiendo.
+[00:04:30] Ya. Sí, ahí está bien la interpretación que, por ejemplo, tú envíes, Franco, créame los para Pedro, pero
+[00:04:40] entre comillas ahí no es tanto responsabilidad mía, sino que debería ser responsabilidad del que me pide crear la la cuenta, ¿cierto? que
+[00:04:49] ponte tus 5 días tienes tú, Francisca, o sea, tú me pedís crear la cuenta, yo la creo. Si el usuario no ingresó después
+[00:04:57] de esos 5 días, el usuario nuevo, eh, yo debería bloquear la cuenta y ahí
+[00:05:05] básicamente si después el usuario quiere intentar ingresar, ya te reportará a ti y tú me dices, "Oye, Franco, ¿qué pasa
+[00:05:13] con la cuenta?" No, yo la creé. Pero tu usuario o la persona que tú dijiste que iba a ingresar nunca ingresó, así que por política la bloquea. Eso sería cierto.
+[00:05:26] Eh, sí, eso es lo que al menos a mí me da a entender.
+[00:05:31] Ah, perfecto. Si es así, eh, hay distintas formas de ir controlándolo.
+[00:05:39] Mira, entonces podríamos ver lo siguiente. tú me dijiste, "Vámonos a un caso bien puntual, el de los usuarios
+[00:05:46] que no tenían inicio de sesión eh, ¿cómo se llama? Eh, antes de, o sea, no han
+[00:05:54] ingresado a la plataforma o no han tenido un inicio de sesión interactivo en los últimos,
+[00:06:02] o sea, que tengan más de 60 días sin ingresar. Aquí estoy comparándolo con
+[00:06:08] agosto, el 28 de agosto. Ese es uno de los parámetros, es decir, todas estas cuentas eh
+[00:06:16] no han ingresado hace 60 días y voy a hacer dos dos, ¿cómo se llama? Dos filtros
+[00:06:23] más. Vamos a agregarle aplicar y un segundo a ver si le puedo
+[00:06:31] aplicar otro filtro que no
+[00:06:45] parece que no me deja. Voy a modificar un poco la vista.
+[00:06:56] y a ver si la cuenta está habilitada. Eso es un punto igual importante.
+[00:07:04] Lo voy lo voy a mover un poquito más más arriba.
+[00:07:13] Ya la cuenta está activa. Entonces, primero vamos a ver si la cuenta está activa
+[00:07:22] y eh las log.
+[00:07:36] Ah, ya. Es como la cuestión que estábamos viendo recién, no deja filtrar
+[00:07:43] eh las no se pueden mezclar las el último inicio de sesión no interactivo o interactiva.
+[00:07:53] Entonces, por ejemplo, dos meses hacia atrás, 28 de agosto,
+[00:08:01] no permite ordenar ni una cosa. Medio fome. Esto tendría que descargarla. la data completa
+[00:08:08] para, por ejemplo, las columnas que necesitan. Podría pasarle eso. Por ejemplo, aquí ustedes, ¿qué necesitarían?
+[00:08:18] El last eh last login y el last eh había
+[00:08:26] uno que era ¿Qué otra cosa necesitan? La última creación.
+[00:08:32] Eh, esto no creo que le interesa. Esto tampoco, ¿eh?
+[00:08:46] Esa gente tampoco. Ya.
+[00:08:58] ¿Qué otra información necesitan para yo exportarla? Y por último ustedes la trabajan y ustedes me dicen, "Mira, Franco, según la información que tú me
+[00:09:06] pasaste, todas estas cuentas eh han tenido un inicio de sesión durante o no
+[00:09:14] han ingresado eh las cuentas de Austranet y están activas hace 60 días. ¿Se entiende?
+[00:09:22] Yo les paso la data.
+[00:09:24] ¿Qué qué columna o qué información necesitarían aparte de esta?
+[00:09:31] La última sesión está cierto. Sí, las interactis de administrador
+[00:09:43] o no aparece eso modificar aquí.
+[00:09:51] No sé si si está el rol campo que se llame rol o algo así. Parece que no.
+[00:10:02] Para ver la cantidad de usuarios. Son 495 usuarios en total, ¿o no? Ya, mira, aquí hay un punto importante.
+[00:10:11] Hay usuarios que son member, que son los del del entid y los otros que son invitados.
+[00:10:19] Los invitados a existir cuando tú compartes información con usuarios externos.
+[00:10:25] Eh, eso no sé si lo menciona la política o no.
+[00:10:35] Según lo que leyeron. Menciona algo sobre los usuarios invitados.
+[00:10:41] Si no, igual necesitaría que lo investiguen para ver qué dice Microsoft con respecto a los usuarios invitados.
+[00:10:51] ¿Cómo que lo vamos a investigar? Por lo que vi solamente mencionaba tipo lo de los usuarios que tienen cuenta, pero nunca
+[00:11:00] iniciaron sesión que eso sí tienen que revisar y los que llevan simplemente inactivos, pero creo que no aparece, pero voy a
+[00:11:08] revisar igual de cuentas nuevas sin inicio de sesión.
+[00:11:20] Ya. Entonces, como para ir listando un poco, no más, eh, tendríamos estos puntos. Uno que mencionó Francisca,
+[00:11:28] gestión de las cuentas nuevas inici 5 días ya. Eh, gestión de cuentas inactivas.
+[00:11:39] ¿Cuántos días dice la política que leyeron? 45.
+[00:11:43] 60 dice ya. 60. Después de esos 60, ¿qué debería pasar?
+[00:11:49] Se debería revisar y si no existe justificación mantenerla o eliminarla.
+[00:11:57] Y luego ahora revisé la de las cuentas de usuarios invitados. Eh, si que indicar una fecha de expiración, aunque
+[00:12:06] no sé si se puede dar desde la aplicación.
+[00:12:10] sería bloquear y o eh eliminar.
+[00:12:16] Eso. Ya, mira, yo les voy a pasar un adelanto de algo que yo estuve trabajando y está entre comillas casi
+[00:12:24] hecho, pero hay unos puntos que no estaba viendo, que sería ese mismo que estás diciéndome tú de la política
+[00:12:38] política. ¿Dónde lo dejé esta cosa?
+[00:12:47] Acá. Ah, no me acuerdo dónde dejé.
+[00:12:52] Parece lo dejé informe. Ya,
+[00:13:03] de hecho esto lo probí está funcionando.
+[00:13:16] Déjame revisar una cosita. Sí.
+[00:13:20] Y hay unos puntos que me que me está faltando probar en este caso.
+[00:13:27] Le voy a hacer un diagrama mejor. Lo de la expiración se refiere.
+[00:13:35] Mira, es que en verdad estos no sé si han ocupado Power o han hecho un script de Power o de un vato, alguna cosa.
+[00:14:03] Mira, aquí para la gestión de de identidad hay varios puntos. A ver, ya eh
+[00:14:11] estoy de y vamos a ver solamente usuarios para que
+[00:14:21] no se extienda tanto esto porque en verdad están los usuarios, están los grupos, la cuenta de servicio, usuario externo, eh interno, si se y cada cosa
+[00:14:30] se va abriendo un poco más. Entonces, no los quiero confundir tanto. Yo lo que había hecho es identificar tres cosas.
+[00:14:41] Tenía eh un segundo de
+[00:14:51] parece que aquí ya había armado un pequeño plug.
+[00:14:58] Vamos ver mientras carga la extensión.
+[00:15:11] Yo había hecho algo así. V evaluar 30 días, pero eso en verdad es modificable, parametrizable.
+[00:15:20] Parece que el código no está. Ah, sí, parece que lo dejé parametrizable.
+[00:15:25] 30 días sin eso cualquiera de los escenarios
+[00:15:33] escenario de barbar, pero los códigos sí funcionan. Entonces,
+[00:15:42] por ejemplo, ya lo que veía yo son usuarios eh activos.
+[00:15:51] Tengo los usuarios activos y debería hacer una revisión.
+[00:15:57] Sí o sí tengo que hacer una revisión de los que están activos.
+[00:16:01] Tengo que hacer una revisión de los usuarios sin inicio de sesión
+[00:16:08] eh dentro de los x últimos días. Ahí en verdad tomamos la definición de lo que
+[00:16:17] venga por política. En este caso, ustedes me dijeron que era 45 segund lo que leyeron.
+[00:16:25] Tenemos después un proceso de de inactivar las cuentas.
+[00:16:32] Yo lo había hecho así. Eh, bueno, hay un proceso de revisión
+[00:16:39] revisión de dichas cuentas a bloquear. Bloquear sería inactivar.
+[00:16:50] Entonces tengo la cuenta. Después reviso, reviso
+[00:16:57] obviamente un check y proceso, procedo a bloquear bloquear
+[00:17:05] cuentas eh sin activar.
+[00:17:11] Activar con previa justificación.
+[00:17:18] Ya.
+[00:17:20] Eh, ahí si está medio feo el dibujo, después
+[00:17:26] ustedes lo mejoran y lo ustedes me plantean un dibujo un poco mejor, un diagrama más.
+[00:17:38] Entonces tenemos las cuentas después que se bloquearon y al momento de bloquear aquí hay un punto importante.
+[00:17:48] Voy a mantener la misma el tamaño. Hay un proceso llamado de offboarding.
+[00:17:57] ¿Qué se le viene a la mente con el offboarding?
+[00:18:05] A ver, una lluvia de ideas para que participen.
+[00:18:21] A ver, orden de incorporación, pero eh sería como visión de las cuentas, tipo
+[00:18:31] como lo que quedó después de la eliminación y y bloqueando todas las los que estaban inactivos, algo así.
+[00:18:39] Ya, si va por ahí encaminado. Por ejemplo, si yo tenía tu usuario y te tenía una licencia, ¿sí?
+[00:18:47] O tenía varias licencias y esas licencias ya que deberían quedar disponibles para utilizar, ¿cierto?
+[00:18:54] Entonces, debería haber un proceso, debería haber un proceso de quitar licencia. Voy a ir listando. Ponte tú.
+[00:19:01] Quitar quitar licencias. ¿Qué más se le ocurre a usted?
+[00:19:09] Respaldar. Respaldar. Claro. Y aquí, ¿qué tengo que respaldar?
+[00:19:16] One y eh correo. Pensando en que diga eso la
+[00:19:23] política. Si la política no, ¿cómo se llama? Sí, por aquí hay un tema bien puntual, no los quiero enredar
+[00:19:31] tanto, pero me pasó el caso que estaba en un curso de protección de datos personales, que se supongó que iba a
+[00:19:39] salir la ley aquí a diciembre, yo creo que ya ya no salió. Ya entiendo que la van a postergar para el próximo año
+[00:19:48] y dice que el correo es algo un dato personal. Entonces, si yo lo respaldo
+[00:19:55] debería tener cierto cuidado al al respaldar o incluso ni siquiera debería respaldar.
+[00:20:03] Ahí hay que ver los puntos, la matiz blanco negro para ver cómo lo tomas tú
+[00:20:10] como como empresa. Si por contrato tú le dices al al, ¿cómo se llama? al colaborador que
+[00:20:18] los datos van a ser respaldados, pero no vamos a acceder a menos que haya cierto indicio de que tú estás
+[00:20:27] eh tratando de filtrar información hacia la competencia o alguna cosa, con algún motivo, entre comillas, dentro de las
+[00:20:36] cláusulas voy a poder revisarte eh tu correo.
+[00:20:40] Entonces ahí es un tema bien puntual, no voy a adentrar en eso, pero debería respaldar el Way, que es, por ejemplo,
+[00:20:48] donde está todo el trabajo de Rusario, los eh los correos y quitar las licencias. Eso es más menos lo que se me
+[00:20:56] ocurre a mí en primera instancia que debería hacer.
+[00:21:01] Y después de hacer eso, eh, debería existir un periodo periodo
+[00:21:10] de definida de entre comillas bloqueo.
+[00:21:21] Está lo otro es que debe estar alineado con Microsoft.
+[00:21:29] ¿Por qué con Microsoft? Porque Microsoft, por ejemplo, cuando tú quitáis una licencia, los archivos no se pierden. Por ejemplo,
+[00:21:36] tú tenías una licencia de Way, yo te la quité y tú tenías ahí, no sé, un ter ocupado en Wandre o 100 GB. Esos 100 GB
+[00:21:44] no se borra la información hasta x cantidad de 10. Ahí necesito que ustedes lo investiguen y lo vayan agregando
+[00:21:52] también para ir complementando un poco la definición de la política y cómo hacer las cosas. ¿Se entiende?
+[00:22:02] Sí, sí, se entiende.
+[00:22:04] ¿Cuántos aquí? ¿Cuántos días aloja eh,
+[00:22:11] ¿cómo se llama? o almacen eh Microsoft la información
+[00:22:19] de One posterior a quitar
+[00:22:28] una licencia de Office 365.
+[00:22:36] Ya dice que Microsoft almacena la información durante 93 días a partir del momento en que la cuenta se queda sin
+[00:22:42] licencia. Y ahí entre comillas te dice de 1 a 60 días el usuario solo conserva el acceso a su archivo modo lectura. O
+[00:22:52] sea, que si yo te tú tenías información, vas a poder seguir viéndola.
+[00:22:58] Después del día 60 al 93, el acceso de lectura y descarga puede restringirse la cuenta de Wandra y en un
+[00:23:06] proceso previo al archivo. Ah, y después día 96 última clave, o sea, límite
+[00:23:13] clave, eh, Microsoft archiva automáticamente la cuenta de Wanday sin licencia. A partir de este punto, eh los
+[00:23:22] datos ya no son accesibles directamente y puede requiere un proceso o costosos o costos de eh reactivación o
+[00:23:30] almacenamiento para poder recuperar la información.
+[00:23:34] Y aquí hay un punto igual. Eh usuarios eliminados, opción adicional. Si en lugar de quitar la licencia se elimina
+[00:23:42] por completo la cuenta de usuario, entra ID, eh rige el periodo de retención de configuración.
+[00:23:49] que por defecto suele ser 30 días, pero se puede extender hasta 365 días.
+[00:24:00] Entonces, entre comillas, eso debería alinearse, por ejemplo, si quité las licencias eh y está como en
+[00:24:08] periodo de bloqueo, la cuenta, debería ajustarme, yo creería por definición a
+[00:24:15] 30 60 días porque si es que debería haber un proceso aquí, por ejemplo,
+[00:24:24] de revisión, no sé, llegó el día 60, o sea, Estoy inventando día
+[00:24:32] 60 para eliminar cuentas bloqueadas.
+[00:24:40] Debería haber una validación validación y confirmación para eliminación.
+[00:24:53] Entonces, una vez que se se valide ahí, recién, ¿qué hago? Elimino la cuenta.
+[00:25:05] Eliminar cuenta usuario.
+[00:25:12] Eh, una duda.
+[00:25:14] Sí, eh, Franco, el eliminar cuenta de usuario, o sea, bueno, pregunta para todos los usuarios en sí. ¿Son
+[00:25:21] colaboradores, todos son colaboradores o no? Tipo dentro de la misma empresa de opción.
+[00:25:28] No necesariamente un colaborador tiene son solamente colaborar porque por ejemplo y
+[00:25:35] no sé un practicante entró y yo le creé una cuenta dentro del o aquí es un punto
+[00:25:41] bien importante. Por ejemplo, cuando te los te crea a ti. A ver, Pedro,
+[00:25:49] eh, Segovia, Pedro Segovia dice aquí que es un
+[00:25:56] usuario externo, pero yo podía haberte creado aquí como un usuario interno y pasarte usuario y contraseña. ¿Ya?
+[00:26:07] Entonces ahí hay dos formas de haberte creado, como uso invitado, eh, o como usuario interno.
+[00:26:21] Ahí tendríamos que ver si este flujo aplica también para usuarios internos o externos.
+[00:26:30] Ah, y todo es intern, disculpa.
+[00:26:35] Ah, no. Y lo que lo que quería preguntar que esos 495 son entonces solamente internos,
+[00:26:43] ¿no? Aquí la mezcla Sí, aquí me tr eh creo que se llama user type.
+[00:26:52] type user type solamente entre comillas miembros del Active Directory son 189
+[00:27:02] que de aquí hay algunos que están bloqueados. Entonces, por ejemplo, si le pongo filtro de cuentas que están
+[00:27:09] habilitados, ya igual hay hasta 127 mucho muchas cuentas activas que
+[00:27:17] no necesariamente deberían estar. Y aquí, bueno, lamentablemente no puedo filtrar por por el last login. A ver, segundo last.
+[00:27:30] Sí, no está en last, pero lo que voy a hacer, voy a hacer enviarle esta tabla y aquí vienen los los usuarios internos y externos.
+[00:27:41] Por favor, aquí no sé si se contactó con ustedes para firmar el tema del NDA porque igual van a ver información.
+[00:27:49] digamos, no han contactado. ¿Quién nos debería de contactar? Joana.
+[00:27:56] Joana, ya no, pero voy a mandarle igual esto para que lo puedan ver, ¿eh?
+[00:28:04] Y le voy a pedir a Joana que se ponga en contacto con ustedes. Ya.
+[00:28:11] Entonces, aquí voy a descargar esto, eh.
+[00:28:23] Con esta información ya van a poder responder a las dudas que tenían como
+[00:28:29] equipo. Y lo otro es ya van a que están pidiendo, ¿cierto? que sería
+[00:28:37] eh los usuarios activos, etcétera, etcétera.
+[00:28:42] Yo lo que sí voy a hacer es denme un segundo.
+[00:28:50] Recarga, yo soy demasiado disperso en la barra
+[00:29:00] antes de irme a descarga. les voy a subir esto porque en verdad yo aquí lo que tenía era el flujo casi completo
+[00:29:09] en el cual me conectaba, por ejemplo, a una lista de checkpoint. Eh, creo que lo dejé en soporte.
+[00:29:22] Soporte pruebas. No me acuerdo.
+[00:29:36] Mejor voy a abrir la carpeta del así veo que dónde me estaba conectando.
+[00:29:51] Voy a ver el menú para Open Folder.
+[00:30:14] Ah, ya. seleccionar f.
+[00:30:22] A ver si les comparto esto completo porque en verdad esto nunca llegó a producción.
+[00:30:31] Eh, sería sería ideal la duda. También tenía otra duda. Eh,
+[00:30:38] nosotros tenemos que para ir avanzando y todo, pero ¿dónde podemos como subir la documentación y como los puntos que
+[00:30:45] vamos tratando en algún drive o algún, no sé, estaba pensando en KitHub, pero ¿qué información va a subir?
+[00:30:58] por ejemplo, no sé, puntos que eh que podríamos tratar, por ejemplo, lo de los
+[00:31:05] usuarios bloqueados o eh aspectos que deberíamos de ir
+[00:31:12] eh en sí como documentación, no sé, eh podrían dejarlo ahí mismo en el
+[00:31:21] avances avances acá, pues en la carpeta de ustedes hac Nosotros podemos subir, ¿no? A ver, cachado.
+[00:31:30] A ver, veamos. Eh, dentro de esto administración de acceso
+[00:31:40] grupo uno. Sí, pues ustedes pueden editar, o sea, que así pueden cargar información. Ah, no cachá.
+[00:31:49] Entonces, por ejemplo, aquí podrían tener una carpeta de trabajo como hallazgos.
+[00:31:55] podrían tener hallazgos, eh, y el control como tal. El control para mí el
+[00:32:02] que deberíamos llegar a implementar es entre comillas lo que tengo aquí.
+[00:32:08] Mira, a ver, voy a ejecutarlo si me funciona.
+[00:32:17] Crear lista crear. No, eh,
+[00:32:28] esto crea la offbarding detección de inacción.
+[00:32:33] Entonces, RB notificación responsable, no detección
+[00:33:02] que sí. Aquí está.
+[00:33:40] Y d un segundo parece que yo la tenía interactiva, no le creo un ritmo.
+[00:33:54] Parece que lo había dejado como eh Sí, que genere como la revisión no más,
+[00:34:01] pero que no me elimine nada. Ah, sí, pues dice detección, así que
+[00:34:08] según esto debería ser solamente detectar en base a la cantidad y eso lo pasé como por parámetro. cuarentena
+[00:34:17] ofbarding eh es solamente detección, no bloquea, no
+[00:34:26] revoca las sesiones, no toca las licencias, la responsabilidad es calcular la cantidad de bla bla bla.
+[00:34:34] Entonces veamos si si lo puedo ejecutar.
+[00:34:43] Lo que sí no me acuerdo es dónde estaba creando los sitios, donde dejé
+[00:34:52] crear estas lista. Parece que era en el sitio esa puerta. Dme un segundo.
+[00:35:02] Yo sé que no me están entendiendo nada de lo que estoy diciendo. Más o menos.
+[00:35:10] Está parece que aquí está, ¿no?
+[00:35:16] ¿Dónde de Yo sé que lo trabajé, pero no me acuerdo dónde lo metí, eh.
+[00:35:31] Creas listas.
+[00:35:34] A ver, contenido sí, aquí está.
+[00:35:45] Ya. Entonces debería ser sitio de soporte.
+[00:35:52] Aquí estamos ejecutándol. Entonces, el sitio va a ser este.
+[00:36:00] Aquí es donde están las listas.
+[00:36:20] de 30 días.
+[00:36:23] Se supone que está detectando todos los usuarios con umbral de cuarentena de 30.
+[00:36:33] Eso está, no lo especifique.
+[00:37:05] Eh, Eh
+[00:37:23] ya, disculpe, perdón que me tengo que
+[00:37:32] retirar, así que voy a dejar al resto de mi grupo aquí para que terminen este tema, pero ya creo que todo lo que nos pasó hasta ahora está anotado y yo igual
+[00:37:40] le voy a mandar un correo más tarde con, no sé, algún tipo de información o una lista de las cosas que necesitamos porque ya el profesor nos pidió que esta
+[00:37:48] semana tuviéramos como ya un avance, así que vamos a como revisar todo lo que nos entregó y ver si nos falta algo para pasarle al profesor ya creo que es el
+[00:37:55] jueves o el viernes. Le tenemos que dar como una un hito de avance.
+[00:38:00] Entonces, voy a subirle al tiro esto aquí auditoría, ya. Así que por eso ahí creo que los chicos terminen con usted. Muchas gracias por la reunión.
+[00:38:11] Vamos, le podemos poner esto de data eh usuarios.
+[00:38:26] Ahí ustedes lo pasan a a un Excel el tema de limitador delimitador de punto y coma y todo el tema.
+[00:38:35] Nos va a pasar esto también.
+[00:38:56] Por último, después ustedes hacen algo un poco más bonito.
+[00:39:05] Creo que descargas eh
+[00:39:12] borrado. Borrador flojo. Eh,
+[00:39:27] oye, cualquier cosa me pregunta, ¿no?
+[00:39:29] que yo sé que voy hablando para todos lados y a veces no voy en el punto.
+[00:39:40] Eso ahí va el borrador. Es como entre comillas el flujo que conversamos y los usuarios. Entonces ahí tienen que hacer
+[00:39:48] la la detección, pero entre comillas ustedes tienen que hacer la detección e implementar el control. Entonces, ¿cómo
+[00:39:55] implementan el control? Es más menos lo que está lo que hice yo, pero en verdad nunca lo pasé a producción.
+[00:40:02] Eh, eso es como eso es como una automatización para detectarlo en activo y como cumplir las reglas.
+[00:40:14] Sí, mira, déjame ver si si lo echo andar esta cosa.
+[00:40:22] Código de comando.
+[00:40:27] Python no está.
+[00:40:34] A veces hay algunos módulos que no nos toman power.
+[00:40:40] Ver con power 7 a ver si es que funciona.
+[00:40:52] Eh, defección se puedear.
+[00:41:08] siempre pasa que No.
+[00:41:42] Ah, no sé.
+[00:41:53] Eliminación de activa ejecución dando el problema. Lo otro sería que haga la la ch como ande.
+[00:42:26] Soy B.
+[00:42:47] Siempre pas que hay un comando porque estos PS1 a veces no te lo deja ejecutar.
+[00:43:28] me dice que que ocupar este comando, pero parece que no sé si es el mismo que yo ejecuté. Ahí se lo ven.
+[00:43:39] No reiera permiso de mercado.
+[00:43:50] Sear
+[00:44:06] entre comillas lo que dice es como ejecutar de todos modos y como pasea la política en este archivo,
+[00:44:16] la media vuelta va a poder recién ejecutar escrit
+[00:44:26] parece parece que está mal, parece que no va a funcionar porque está tomando la identidad modo de identidad entrada de
+[00:44:35] de otra cosa. S.
+[00:45:10] Yo creo que para no hacerlos perder más tiempo voy a revisarlo yo y por último les cargo, les mando un correo cuando
+[00:45:17] les cargo esto con la con la actualización.
+[00:45:22] De todos modos, si lo ejecutan a ustedes no les va a funcionar porque entre aquí está tomando la la identidad de mi
+[00:45:29] cuenta que tiene permisos para leer el la idea después es que no lo haga con mi
+[00:45:37] cuenta y no ejecutarlo el comando yo, sino que quede con una tarea programada.
+[00:45:43] Yo lo había avanzado y lo tenía aquí, mira, portal.
+[00:45:51] Eh, se llama account automation account.
+[00:45:59] Aquí eh roundbook.
+[00:46:12] Entonces, por ejemplo, aquí tengo prueba validación de inactivos.
+[00:46:21] decir que se ejecute.
+[00:46:47] Evitar important. Esta
+[00:47:12] era la primera prueba que levanté que no tenía parámetro, estaba todo hardcodado la cantidad de días que debería revisar y todo.
+[00:47:22] Después lo modifiqué, funcionaba, pero ahora no va a funcionar. Voy a revisar qué onda.
+[00:47:34] Y ese tema que como uno a veces crea cosas y no los pasa producción, no los documenta, después queda como en el tintero y
+[00:47:43] prácticamente no lo formalizaste. Entonces, en este caso, ahí tengo yo una mala cuestia que ve empieza alguna cosa, no no lo alcanzo
+[00:47:52] a terminar, me por los lados y y lo dejé ahí.
+[00:47:56] Ah, esas son malas prácticas por porque por las credenciales que utilizo el código.
+[00:48:04] Eh, no exactamente. En verdad yo siento que lo hice de la mejor forma posible, pero parece que después el código lo
+[00:48:12] había adaptado para que no tome la identidad mía, sino que tome la identidad administrada de de
+[00:48:19] esto, que sería eh el recurso que se llama, ¿cómo se llama? Eh, auto mention.
+[00:48:35] Parece que no va a funcionar. Si no, déjenme lo preparo para la próxima re e y le subo ahí más o menos el código.
+[00:48:45] Pero la idea es que ustedes después de de ver el diagrama que les que les mostré digan cómo hacemos para que
+[00:48:53] Franco no tenga que hacer la pega, sino que hacer un robot.
+[00:48:57] entre comillas eso sería un control semiautomatizado porque igual hay ciertas variaciones que yo debería
+[00:49:05] hacer. Por ejemplo, si va a una cuenta X, eh yo debería darme un lapso la
+[00:49:11] automatización para que no eh borre la cuenta o no la bloquee al tiro eh sin mi autorización, ¿cachá?
+[00:49:22] Ah, y para eliminar se puede eliminar directamente del código, tipo mandar como que automatizado total o se necesita.
+[00:49:30] Es que eso es lo que le iba a mostrar, pero no me funcionó. Yo tengo la detección de los usaros activos. Esa
+[00:49:37] detección después yo la dejaba en una lista que era el estado de los usuarios,
+[00:49:45] activo en cuarentena, pendiente, etc.
+[00:49:49] Entonces, yo básicamente esta lista me servía a mí para eh para tener control. Entonces después yo
+[00:49:58] ejecutaba el siguiente, no sé, eh, bloquea, que era básicamente inhabilitar
+[00:50:04] la cuenta, tomaba la cuestión, revocaba todas las sesiones, eh, y después
+[00:50:12] cambiaba acá el estado, lo ponía bloqueada o en cuarentena, que sería la el bloqueado, ¿cachá?
+[00:50:21] Okay.
+[00:50:21] Y y mostraba la cantidad de días que está desactivada la cuenta. Entonces, por ejemplo, este me actualizé y me
+[00:50:29] decía, "Mira, veo que esa cuenta está inactiva o no se ha logueado hace 300,
+[00:50:36] no sé cuántos días, 200 días, 2000 días, hace un día y la cuenta está activa.
+[00:50:44] Ya, déjame revisar cómo hice esto porque no me acuerdo, la verdad, ¿eh?
+[00:50:51] y se lo actualizo y ahí en verdad ustedes me ayudan a pasar la producción.
+[00:50:55] No estaba listo del todo porque ahí Francisca levantó un punto que que no lo había visto, que es que se bloquea
+[00:51:04] automáticamente si dentro de los 5 días él no inició sesión, porque al final a
+[00:51:10] veces para ti hacerle ese seguimiento es una paja, la verdad. Con la con suerte me acuerdo que hice ayer para acordarme
+[00:51:18] que hace 5 días creé un usuario y ir a revisar si inició sesión o no. ¿Cachá?
+[00:51:25] Ese control mecánico que yo tenga que ir a hacerlo es una lata, no se me va a olvidar
+[00:51:32] o con algún tipo de eh que el mismo sistema te le tire como reportes si pase a cierto un de día inactivo.
+[00:51:42] Lamentablemente eso no se puede como nativamente no hay un reporte que lo haga. Por eso, entre comillas, hay
+[00:51:50] que hacer automatizaciones. En este caso se conecta a través de, ahí les paso el nombre interesante, Microsoft Graft. Se
+[00:51:57] conecta con graf para el tema de los usuarios y eh con eso ya puede ver los usuarios y la misma información que les pasé.
+[00:52:08] Entiendo Microsoft.
+[00:52:18] Yo creo que sería eso. Voy a me qu intriga de por qué no me está funcionando, así que voy a voy a volver a revisar
+[00:52:26] eh qué está sucediendo y nos reunimos ahí. No sé, planifiquen. Ponte tú lo el mismo diagrama que hice mejor.
+[00:52:40] No se pu, por ejemplo, aquí hay un punto que yo no vi que era el que comentaba Francisca.
+[00:52:48] ¿Qué pasa si un usuario usuario nuevo nuevo eh
+[00:52:56] bloquear si no accede?
+[00:53:01] dentro de dentro de los primeros 5 días, ¿ya? Y eso entre comillas
+[00:53:10] debería ser con una automatización de power, ¿cómo se llama? Eh, powerch.
+[00:53:20] Eso lo podría efectivamente ejecutar porque cuando hago el descubrimiento de cuántos días la cuenta no tiene eh unice sesión, lo voy a poder saber.
+[00:53:33] Ya, no sé si se entiende. S, si yo juro que me entiendo, ¿no? Ah, sí se entiende, se entiende.
+[00:53:42] Entonces, por ejemplo, eh yo yo lo primero que haría sería como reflexionar
+[00:53:50] un poco del diagrama este que le estoy mostrando y perfeccionarlo porque aquí se algo muy a la rápida,
+[00:53:58] alinearse a lo que dice la política, por ejemplo, aquí la X reemplazarla aquí el cinco está bien porque ustedes lo leyeron decía 5 días, ¿eh?
+[00:54:10] Y esto solamente usuarios internos.
+[00:54:13] Internos dejemos, yo creo que dejemos fuera del alcance los externos. Si nos da el tiempo aplicamos esto y lo dejamos en
+[00:54:22] producción, genial. Y vemos lo de los externos, porque los externos para mí si no ingresaron 60 días eliminarnos. No
+[00:54:31] necesito hacer. Yo no me saltaría el offboarding,
+[00:54:40] me saltaría el bloqueo, yo diría solamente algo así como no ha entrado durante 60, 90 días, chao, le borro el acceso, elimino los usar y listo.
+[00:54:51] Disculpa. Eh, los internos, ¿a quién abarcaba? tipo abarcada a los colaboradores y a los eh
+[00:55:01] los internos son todas las todas las cuentas que yo creé dentro del entablemente responsabilidad mía eh, ¿cómo se llama?
+[00:55:14] Actualizar los datos. Por ejemplo, si a ver entra, por ejemplo, nosotros seríamos externos,
+[00:55:22] ¿o no? Usted, mira, yo le mandé un Excel, ¿cierto? Ese Excelí viene con miembro o guest. Los que son
+[00:55:32] guest son us invitado y se van a dar cuenta al tiro porque aquí en el user principal name viene así con external y
+[00:55:41] queda como entre comillas que que le asigna a este usuario a nivel interno.
+[00:55:46] Ellos autentican así. Yo, ¿cómo lo identifico con este nombre? Pero en verdad es como una composición.
+[00:55:54] Aquí dice este sería el guion bajo co. Sería el
+[00:56:02] o miento el guion baj el porque si te dais cuenta el correo de Adrián que ni siquiera sé quién es el
+[00:56:11] eleta, el Geta, no sé cómo se dice, sería eh Adrián.sapellido su apellido @ alumnosucn.cl.
+[00:56:22] Si te das cuenta aquí debería ser hasta acá y el y este es el correo de la persona externa, ¿cachá? Pero él para
+[00:56:30] poder identificarlo dentro del ten agrega este ext, etcétera, etcétera.
+[00:56:39] Lación. Ya, eso. Entonces, revisen los usuarios y eh
+[00:56:48] voy a buscar algún videíto si es que está por ahí como cómo aplican políticas de automatización para
+[00:56:55] para hacer esto. Yo en verdad con la I había hecho esto, así que por eso mismo no me acuerdo del todo cómo lo hice o
+[00:57:03] qué tenía que hacer, eh, así que lo voy a revisar y les mando un
+[00:57:11] video si lo logro hacer para que vean cómo se actualiza, cuál es el flujo y así entre comillas aprovecho de documentarlo con un video, les comento
+[00:57:19] qué es lo que hice, cómo se ejecuta y qué es lo que hay que hacer ahora, porque en verdad una cosa es que se ejecute el local con mi cuenta.
+[00:57:28] Pero yo la idea es que si no está mi computador, mi cuenta y no se ejecutó, ponte tú corri una tarea programada en mi PC, yo no soy el responsable, cachá.
+[00:57:37] Esto debería estar en la nube para que se ejecute todos los días. Claro. Entonces, ¿cómo se ejecuta en la nube?
+[00:57:47] Yo busqué y hay un tipo de recurso que se llama automation account. Le puedo dejar ahí una captura
+[00:57:56] de esto en el propio Microsoft Power eh Power S.
+[00:58:03] Mira, esto está en Archure. Se llama el proveedor de de servicios Cloud.
+[00:58:11] Si tú quieres levantar una máquina virtual, una SQL, esta es la plataforma donde tú lo levantas,
+[00:58:19] ¿ya? Y esto sería un recurso que está en el data center, que en verdad es ser como como una, llamémoslo una tarea
+[00:58:28] programada de alguna manera que te da el servicio, eh, ¿cómo se llama? Microsoft.
+[00:58:34] una VPS, ¿no? VPS, ¿no? Yo creo que algo más
+[00:58:42] esto. A ver, ¿cómo es más sencillo? Mirando que una
+[00:58:50] Sí, es que en verdad lo que hace el automation account es ejecutar skip de Power Chell of Python.
+[00:59:00] Ah. Ah. Entonces, espera, algo así.
+[00:59:04] Entonces, por detrás debe estar en un servidor ejecutándose, pero eh no tengo idea la arquitectura qué es lo que ocuparan. Una BPS es más
+[00:59:13] grande porque la BPS básicamente es un servidor virtual privado, ya es como una máquina virtual, pero entre comillas compartida los recursos.
+[00:59:25] Pero esto es tan especial que, por ejemplo, lo único que que uno ocupa son los
+[00:59:33] Rambox, uno los puede ir creando aquí adentro y te dice cuál es el stack, si
+[00:59:39] es PowerP o si es Python y tú le podíis instalar librerías o módulos de PowerP.
+[00:59:48] entiendo.
+[00:59:50] Es como algo mucho más chico. Es como, a ver, ni siquiera un Docker. Yo creo el Docker es más grande que esto. Doer al final es una máquina virtual completa que tú le instaláis una imagen en base.
+[01:00:01] Esto es algo mu chico, pero qué bueno que se entienda igual que que no es una VPS, es un servicio bien particular que te da Microsoft para automatizar cosas.
+[01:00:13] El objetivo final sería, disculpa, el objetivo final sería eh automatizar el el Exacto. aplicar el control automatizado.
+[01:00:26] Ese sería el objetivo final que espero que logremos, que yo en verdad estuve a un paso y en verdad después como me voy
+[01:00:35] aburriendo las cosas lo dejé de lado, pero al menos ya tengo una noción porque ya lo había trabajado.
+[01:00:44] Entiendo, ¿no? Sí, casi completo.
+[01:00:49] Sí, de hecho me faltó muy poco y al final parece que había empezado un proyecto y me ocupé en el proyecto y dejé de lado la cuestión que estaba
+[01:00:58] haciendo y no tuve tiempo y ahora pasaron meses a ver si veo la carpeta.
+[01:01:05] Ah, pero eso lo hizo hace meses.
+[01:01:07] Ah, no miento. Lo hice hace no mucho, hace poquito más de un mes,
+[01:01:13] pero por alguna razón lo dejé de lado,
+[01:01:22] pero eso no les voy a subir todavía el código porque en verdad eh voy a recordar cómo se hacía. Voy a subirle un
+[01:01:29] video más o menos de cómo funciona, porque él, yo ya hice el flujo completo, yo hacía el flujo de detectarlo, lo
+[01:01:36] actualizaba la lista, después me notificaba, me enviaba un correo cuando iba a bloquear, hacía toda la cuestión, pero no me acuerdo bien el proceso.
+[01:01:49] Y ese automation account, o sea, el de automatizaciones, acepta solamente Python y Power Shellow, ¿no? Mira, estoy
+[01:01:57] viendo el código. Sí. Ah, acepta Power Chan y Python. Aquí tengo la
+[01:02:06] notificación de responsable. Entonces, si mira, si busco el asunto debería encontrarlo. Si fue hace un mes y algo.
+[01:02:15] Claro.
+[01:02:17] Ya. Entonces, aquí está diciendo, "Hola, los siguientes usuarios a cargo llevan un tiempo prolongado sin iniciar sesión.
+[01:02:26] en los sistemas corporativos, ¿verdad?
+[01:02:29] Estas dos cuentas eran las que yo estaba mirando porque hice una prueba bien, A ver, acá
+[01:02:37] cuando hacía la detección le podía poner un grupo en especial, este excluía, pero también le había agregado al punto de grupo especial.
+[01:02:48] ¿Para qué? para poder hacer la prueba un poco más chica y no bloquear tanto usuario si era una entorno de prueba.
+[01:02:54] Entonces, había detectado esa esas dos cuentas. Si estas personas siguen activas en la organización, no se requiere ninguna
+[01:03:02] acción de tu parte. Si alguna no forma parte del equipo, no necesitas, por favor, ponte en contacto. Ya había otro después.
+[01:03:13] ¿Por qué se me está pasando en inglés esta cosa? Yo vale inglés. Los siguientes usuarios a tu cargo llevan un tiempo prorrogado.
+[01:03:22] Y aquí me mostraba.
+[01:03:25] Ese era un flujo, pero parece que después también eliminación de cuenta parece que mandaba correo si no me equivoco. A ver, SMP.
+[01:03:36] Sí, estos son mensajes, no parece es el pie, el encabezado.
+[01:03:48] Entonces aquí si busco,
+[01:03:56] había hecho varias pruebas. Bueno, este es un esta cosa,
+[01:04:04] un un correo de prueba porque al final le había agregado también la función y le qué sucede si
+[01:04:11] eh obviamente que no ejecutaba, era una simulación de un bloqueo que decía, eh, se bloquearían todas estas cuentas por
+[01:04:19] una inactividad prolongada. Aquí ya estaba metiendo el tema en completo todos los usuarios y me iba a bloquear
+[01:04:26] todo esto porque este tenía 97 días, cento y tanto y le mostraba la cantidad de días,
+[01:04:33] ¿cachá? Y el offboarding también tenía el offboarding también tenía un correo, una parte de envío correo SMTP
+[01:04:44] y le ¿Qué le puse? Ah, what if I esta es simulación de bloqueo
+[01:04:52] se complementó, se completó el offbarding, es decir, ¿qué es lo que hice? El respaldo W se
+[01:05:00] gestiona de manera manual. Está fuera del RBX, el buzón quedó como compartido y se
+[01:05:08] removieron las licencias. O sea, que el offboarding alcancé a automatizar, quitar las licencias y el buzón dejarlo
+[01:05:16] como compartido y es como entre comillas decir que respalde el correo y el one day no lo respaldé, entre comillas debería haberme adentrado en un en un
+[01:05:25] offboarding que respalde el wai del usuario, cachá.
+[01:05:33] De ahí dice, "No se tocó el el W ni el buzón ni las licencias de verdad porque era solamente una prueba.
+[01:05:45] Entonces yo ya más menos lo tenía un poco
+[01:05:52] avanzado. Hay que agregarle algunas funcionalidades como lo que acaba de comentar Francisca, eso de las 5 días,
+[01:06:00] eso yo no lo tenía contemplado. Entonces ese es más fácil porque no tiene que llegarme un correo llega y y me notifica
+[01:06:07] al final se bloqueó porque Francisca, ponte tú, no me avisó que Pedro nunca entró.
+[01:06:12] Claro, cachá. o que me notifique a mí no más como admin y que me diga, eh, Franco, se bloqueó este. Ahí yo le digo, "Oye,
+[01:06:21] Francisca, el usuario que me pediste que creara, Pedro irresponsable nunca entrado, así que se bloqueó." Si
+[01:06:28] necesitáis que entre, avísame para desbloquear, cachá.
+[01:06:35] Sí, sí, entiendo. Ya yo creo que podrían avanzar para
+[01:06:43] mostrarle al profe un flujo. Arreglen un poquito el flujo que les pasé. Y cuál sería el input y el output. El input es
+[01:06:52] decir entran todos los usuarios y el output en el flujo en la primera parte de identificación tengo todos los usuarios que debería bloquear. Todos los
+[01:07:00] que estaban bloqueados y llevan más de 60 días bloqueados. eliminar, etcétera, etcétera.
+[01:07:08] Claro, ese mismo diagrama después se se muestra, pero sí, pues eso lo formalizan y después lo
+[01:07:16] automatizamos de verdad que que quede en la nube y que se ejecute todos los días solo.
+[01:07:23] Sí.

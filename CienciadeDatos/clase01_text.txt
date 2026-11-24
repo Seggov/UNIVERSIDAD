@@ -1,0 +1,559 @@
+--- Diapositiva 1 ---
+CIENCIA DE 
+DATOS 2026 - 02
+Clase 1: Recolectar datos y web 
+scraping
+Docentes:
+Merary Carrasco M.
+Cristhian Rabi R.
+
+--- Diapositiva 2 ---
+OBJETIVOS DE APRENDIZAJE
+•Entender los métodos de obtención de 
+datos y sus formatos para la creación de 
+modelos de machine learning.
+
+--- Diapositiva 3 ---
+AGENDA
+▫ Introducción
+▫ El proceso de recopilación de datos
+▫ Formatos y manejo de datos comunes
+▫ Expresiones regulares y análisis
+
+--- Diapositiva 4 ---
+4
+RECOLECCIÓN DE 
+DATOS
+
+--- Diapositiva 5 ---
+Introducción: CRISP-DM
+Las técnicas para Data Science o Data Analytics, 
+surgieron en la década de los 90.
+Una primera aproximación fue KDD (Knowledge 
+Discovery in Databases), en un intento por normalizar el 
+proceso de descubrimiento de conocimiento.
+Al final de los 90, las principales metodologías eran:
+● CRISP-DM (Cross Industry Standard Process for 
+Data Mining)
+● SEMMA (Sample, Explore, Model, and Assess)
+CRISP-DM, y sus extensiones, son utilizadas hoy en día 
+por diferentes empresas (IBM) para el desarrollo de sus 
+productos y modelos.
+
+--- Diapositiva 6 ---
+CRISP-DM
+Fase I: Business Understanding
+Definición de necesidades del cliente 
+(Comprensión del negocio)
+Esta fase inicial se enfoca en la comprensión de los objetivos 
+de proyecto. Después se convierte este conocimiento de los 
+datos en la definición de un problema de minería de datos y en 
+un plan preliminar diseñado para alcanzar los objetivos.
+
+--- Diapositiva 7 ---
+CRISP-DM
+Fase II: Data Understanding
+Estudio y comprensión de los datos
+La fase de comprensión de los datos comienza con la 
+colección de datos inicial y continúa con las actividades 
+que permiten familiarizarse con los datos, identificar los 
+problemas de calidad, descubrir conocimiento preliminar 
+sobre los datos, y/o descubrir subconjuntos interesantes 
+para formar hipótesis en cuanto a la información oculta.
+
+--- Diapositiva 8 ---
+CASO PRÁCTICO
+Pensemos en una app de delivery (como Uber Eats) que quiere predecir qué 
+productos le faltarán a un supermercado.
+¿Qué se realizaría en cada fase del CRISP - DM?
+
+--- Diapositiva 9 ---
+CASO PRÁCTICO - SOLUCIÓN
+●Fase I – Business Understanding: el objetivo es reducir los quiebres de stock en 
+categorías clave.
+●Fase II – Data Understanding: se revisan los datos disponibles: historial de 
+ventas, inventario, estacionalidad, promociones.
+●Las fases III a VI (preparación, modelado, evaluación y despliegue) las 
+trabajaremos en las próximas clases.
+Idea clave: CRISP-DM no es lineal, se puede volver a una fase anterior si algo no 
+funciona.
+
+--- Diapositiva 10 ---
+SELECCIÓN MÚLTIPLE
+¿En qué fase de CRISP-DM se identiﬁcan problemas de calidad 
+en los datos y se exploran subconjuntos interesantes para 
+generar hipótesis?
+a) Business Understanding  
+b) Data Understanding   
+c) Data Preparation   
+d) Deployment
+
+--- Diapositiva 11 ---
+VERDADERO O FALSO
+1. CRISP-DM es un proceso estrictamente secuencial que nunca 
+permite volver a una fase anterior. 
+2. SEMMA y CRISP-DM surgieron como metodologías para 
+estandarizar el proceso de descubrimiento de conocimiento.
+
+--- Diapositiva 12 ---
+VERDADERO O FALSO
+1. CRISP-DM es un proceso estrictamente secuencial que nunca 
+permite volver a una fase anterior.  →  Falso
+2. SEMMA y CRISP-DM surgieron como metodologías para 
+estandarizar el proceso de descubrimiento de conocimiento.  →  
+Verdadero
+
+--- Diapositiva 13 ---
+13
+Proceso de 
+recopilación de 
+datos
+
+--- Diapositiva 14 ---
+El primer paso en la ciencia de datos
+El primer paso en la ciencia de datos… es obtener 
+datos….
+Este paso generalmente se hace de cuatro maneras:
+1. Descargar manualmente un archivo o conjunto 
+de datos.
+2. Desde una base de datos
+3. Utilizar una API (generalmente basada en 
+protocolos Web)
+4. Directamente desde una página Web.
+
+--- Diapositiva 15 ---
+Modelo Cliente/Servidor
+
+--- Diapositiva 16 ---
+HTTP queries
+La gran mayoría de las consultas de datos automatizadas que 
+ejecutaremos  usarán solicitudes HTTP (se ha convertido en el 
+protocolo dominante para mucho más que solo consultar 
+páginas web)
+La implementación del protocolo HTTP tiene muchos aspectos 
+técnicos que no vamos a ver en el curso, sin embargo es bueno 
+conocer algunos aspectos y su uso.
+Para ello, utilizaremos librerías que ya han sido implementadas 
+y probadas.
+
+--- Diapositiva 17 ---
+HTTP queries
+Ruta o 
+dirección 
+web
+Parámetros 
+adicionales de 
+encabezado y 
+cuerpo
+
+--- Diapositiva 18 ---
+HTTP queries
+Estado de 
+la llamada
+Tipo de 
+contenido Cuerpo
+Ejemplo de salida a llamada a google.com
+
+--- Diapositiva 19 ---
+Conceptos básicos de solicitudes HTTP
+Has visto URL como estas:
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=9&cad=rja&uact=8…
+Las declaraciones extrañas después de la URL son parámetros, estos agregan funcionalidades adicionales a la solicitud.
+https://fakestoreapi.com/products?limit=5
+HTTP GET es el método más común, pero también hay métodos PUT, POST, DELETE que cambian algún estado en el servidor.
+
+--- Diapositiva 20 ---
+Los métodos HTTP
+Son como verbos que le indican al servidor qué acción realizar. Los más 
+comunes son:
+● GET: Se utiliza para solicitar un recurso. Es el método más utilizado y 
+sirve para obtener datos de un servidor.
+● POST: Se utiliza para enviar datos a un servidor, por ejemplo, 
+cuando dan me gusta o comentan en instagram.
+● PUT: Se utiliza para modiﬁcar datos pero generalmente para 
+actualizar un recurso completo.
+● DELETE: Se utiliza para eliminar un recurso.
+
+--- Diapositiva 21 ---
+RESTful API
+Si va más allá de solo consultar páginas web a API web, lo más probable es que 
+encuentre API REST (Representational State Transfer).
+REST es más una arquitectura de diseño,  algunos puntos clave:
+● Utiliza una interfaz y métodos HTTP estándar (GET, PUT, POST, DELETE).
+● Stateless: El servidor no recuerda lo que se estaba haciendo.
+Regla general: si envía la clave de su cuenta junto con cada llamada a la API, 
+probablemente esté utilizando una API REST.
+
+--- Diapositiva 22 ---
+RESTful API
+
+--- Diapositiva 23 ---
+RESTful API
+
+--- Diapositiva 24 ---
+Como consultar con API RESTful
+Consulta una API REST es similar a las solicitudes HTTP estándar, pero casi siempre 
+necesitará incluir parámetros:
+Ejemplo de REST: el servidor no recuerda sus últimas consultas, por ejemplo, siempre 
+debe incluir su token de acceso si lo usa de esta manera.
+
+--- Diapositiva 25 ---
+Autentiﬁcación
+La autenticación básica ha sido tradicionalmente el enfoque 
+más común para el control de acceso a las páginas web.
+La mayoría de las API han reemplazado esto con alguna forma 
+de Oauth o autorización basada en Token.
+
+--- Diapositiva 26 ---
+26
+Formatos y 
+manejo de datos 
+comunes
+
+--- Diapositiva 27 ---
+Formato de los datos
+Los tres formatos más comunes (a juzgar por mi experiencia 
+completamente subjetiva):
+1. Archivos CSV (valores separados por comas)
+2. Archivos y strings JSON (notación de objetos Javascript)
+3. Archivos HTML/XML (lenguaje de marcado de hipertexto/lenguaje de 
+marcado extensible) y strings.
+
+--- Diapositiva 28 ---
+Formato de los datos
+Los tres formatos más comunes (a juzgar por mi experiencia completamente subjetiva):
+Archivos CSV (valores separados por comas)
+
+--- Diapositiva 29 ---
+Formato de los datos
+Archivos CSV (valores separados por comas)
+Si los valores en sí mismos contienen comas, puede encerrarlos entre comillas.
+“3,35”, “4,245”, “Hola”, 35, 27
+Hay que tener cuidado que los archivos CSV pueden o no contener cabeceras. 
+Por ejemplo,
+
+--- Diapositiva 30 ---
+Formato de los datos
+CSV reader: Es un nodo Knime que permite leer archivos CSV
+Identiﬁcar donde 
+se encuentran los 
+archivos Ruta y nombre del archivo
+¿Tiene 
+cabecera el 
+archivo?
+Sintaxis del archivo
+
+--- Diapositiva 31 ---
+Formato de los datos
+Los tres formatos más comunes (a juzgar por mi experiencia completamente subjetiva):
+Archivos y strings JSON (notación de objetos Javascript)
+
+--- Diapositiva 32 ---
+Formato de los datos
+Archivos y strings JSON (JavaScript Object Notation)
+JSON se originó como una forma de encapsular objetos Javascript
+Se pueden representar varios tipos de datos diferentes
+● Número: 1.0 (siempre se supone que es punto ﬂotante)
+● String: "cadena"
+● Booleano: verdadero o falso
+● Lista (matriz): [elemento1, elemento2, elemento3,...]
+● Diccionario (Objeto en Javascript): {"clave":valor}
+Las listas y los diccionarios se pueden incrustar entre sí:
+[{"clave":[valor1, [valor2, valor3]]}]
+
+--- Diapositiva 33 ---
+Formato de los datos
+Archivos y strings JSON (JavaScript Object Notation)
+
+--- Diapositiva 34 ---
+Formato de los datos
+Archivos y strings JSON (JavaScript Object Notation)
+
+--- Diapositiva 35 ---
+Formato de los datos
+JSON reader: Es un nodo Knime que permite leer archivos JSON
+Identiﬁcar 
+donde se 
+encuentran los 
+archivos
+Ruta y nombre del 
+archivo
+Sintaxis del archivo
+
+--- Diapositiva 36 ---
+Formato de los datos
+Los tres formatos más comunes (a juzgar por mi experiencia 
+completamente subjetiva):
+Archivos HTML/XML (lenguaje de marcado de hipertexto/lenguaje de 
+marcado extensible) y strings.
+
+--- Diapositiva 37 ---
+Formato de los datos
+XML reader: Es un nodo Knime que permite leer archivos XML
+Identiﬁcar 
+donde se 
+encuentran los 
+archivos
+Ruta y nombre del 
+archivo
+Sintaxis del archivo
+
+--- Diapositiva 38 ---
+Formato de los datos
+Característica CSV (Comma Separated 
+Values)
+JSON (JavaScript Object 
+Notation)
+HTML (HyperText Markup 
+Language)
+XML (eXtensible Markup 
+Language)
+Propósito 
+principal
+Almacenamiento de datos 
+tabulares
+Intercambio de datos 
+estructurados entre sistemas Creación de páginas web Almacenamiento y transporte 
+de datos estructurados
+Estructura Texto plano con valores 
+separados por comas
+Jerárquico, basado en pares 
+clave-valor
+Jerárquico, basado en 
+etiquetas
+Jerárquico, basado en 
+etiquetas personalizables
+Uso típico Hojas de cálculo, bases de 
+datos, exportación de datos
+Configuración de 
+aplicaciones, APIs, 
+intercambio de datos
+Creación de páginas web, 
+interfaces de usuario
+Config. de aplicaciones, 
+intercambio de datos, 
+almacenamiento de datos
+Ventajas Simple, fácil de crear y leer Ligero, rápido, legible, 
+ampliamente soportado
+Estándar de la web, familiar 
+para la mayoría
+Flexible, extensible, 
+autodescriptivo
+Desventajas
+Limitado para datos 
+complejos, falta de 
+autodescripción
+Menos flexible que XML para 
+estructuras complejas
+Estructura rígida, puede ser 
+verboso
+Requiere más caracteres que 
+JSON, puede ser complejo 
+para estructuras simples
+Resumen
+Perfecto para datos en 
+tablas, como hojas de 
+cálculo. Es sencillo y fácil 
+de leer tanto para humanos 
+como para máquinas
+Ideal para intercambiar 
+datos entre sistemas, como 
+en APIs. Es más 
+estructurado que CSV y 
+muy popular en el 
+desarrollo web.
+El lenguaje fundamental 
+para crear páginas web que 
+vemos en el navegador. 
+Define la estructura y 
+contenido de una página.
+Muy versátil para 
+almacenar y transportar 
+datos de forma 
+estructurada. Puedes crear 
+tus propias etiquetas para 
+representar cualquier tipo 
+de información.
+
+--- Diapositiva 39 ---
+CASO PRÁCTICO
+Un mismo producto de una tienda online, representado en cada formato:
+¿CÓMO SERÍA LA ESTRUCTURA DE ID, NOMBRE Y PRECIO?
+●CSV:  
+●JSON: 
+●XML:
+
+--- Diapositiva 40 ---
+CASO PRÁCTICO - SOLUCIÓN
+Un mismo producto de una tienda online, representado en cada formato:
+●CSV:  id,nombre,precio  →  101,Zapatillas Running,29990
+●JSON:  {"id":101,"nombre":"Zapatillas Running","precio":29990}
+●XML:  <producto><id>101</id><nombre>Zapatillas 
+Running</nombre><precio>29990</precio></producto>
+Mismo contenido, distinta estructura: CSV es plano (tabular), JSON y XML 
+son jerárquicos.
+
+--- Diapositiva 41 ---
+SELECCIÓN MÚLTIPLE
+Necesitas guardar el catálogo de una tienda para abrirlo directo 
+en Excel. ¿Qué formato es más directo?
+a) JSON   
+b) XML   
+c) CSV   
+d) HTML
+
+--- Diapositiva 42 ---
+VERDADERO O FALSO
+1. Todos los archivos CSV incluyen obligatoriamente una ﬁla de 
+cabecera.
+2. En JSON, las listas y los diccionarios se pueden anidar entre sí.
+
+--- Diapositiva 43 ---
+VERDADERO O FALSO
+1. Todos los archivos CSV incluyen obligatoriamente una ﬁla de 
+cabecera.  →  Falso
+2. En JSON, las listas y los diccionarios se pueden anidar entre sí.  
+→  Verdadero
+
+--- Diapositiva 44 ---
+44
+Expresiones 
+regulares y 
+análisis
+
+--- Diapositiva 45 ---
+Resumen de Expresiones regulares
+Caracteres especiales
+Función Ejemplo
+a Haga coincidir el carácter 'a'
+[abc] Haga coincidir el carácter 'a', 'b' o 'c'
+[^abc] Cualquier carácter excepto 'a', 'b' o 'c'
+\d Haga coincidir cualquier dígito (= [0-9])
+\w Coincide con cualquier 
+alfanumérico
+(= [a-zA-z0-9_])
+\s Coincidencia de espacios en 
+blanco
+(= [ \t\n\r\f\v])
+. Coincide con cualquier carácter (incluida la nueva línea con 
+re.DOTALL)
+
+--- Diapositiva 46 ---
+Resumen de Expresiones regulares
+Caracteres especiales
+Función
+a Coincidencia del carácter 'a' exactamente una vez
+a? Coincidencia del carácter 'a' cero o una vez
+a* Hacer coincidir el carácter 'a' cero o más veces
+a+ Coincide con el carácter 'a' una o más veces
+a{n} Coincide con el carácter 'a' exactamente n veces
+Fuente de 
+datos
+Exp. 
+Regular
+
+--- Diapositiva 47 ---
+Ejemplos
+Encontrar sólo las palabras que comienzan en mayúscula. Utilice el siguiente texto respecto al INE:
+El Instituto Nacional de Estadísticas, INE, es el organismo encargado de producir las estadísticas oﬁciales del país. Además, es el encargado de realizar los censos en Chile.
+Su labor es fundamental porque las estadísticas que entrega sirven, principalmente, de apoyo para que el Estado implemente políticas públicas (Son acciones que aplica un gobierno, para dar respuestas a las diversas demandas de la sociedad, por ejemplo: carreteras, empleo, áreas verdes, etc.) que vayan en beneﬁcio de la población, donde las personas tanto del ámbito público como privado puedan tomar decisiones basadas en información.
+Use uno de los siguientes simuladores:https://regexr.com/https://www.site24x7.com/es/tools/analizador-de-regex.html
+
+--- Diapositiva 48 ---
+Ejemplos
+
+--- Diapositiva 49 ---
+Ejemplos
+Encontrar las palabras con “p” ó “P”. Utilice el siguiente texto:
+El Instituto Nacional de Estadísticas, INE, es el organismo encargado de producir las estadísticas oﬁciales del país. Además, es el encargado de realizar los censos en Chile.
+Su labor es fundamental porque las estadísticas que entrega sirven, principalmente, de apoyo para que el Estado implemente políticas públicas (Son acciones que aplica un gobierno, para dar respuestas a las diversas demandas de la sociedad, por ejemplo: carreteras, empleo, áreas verdes, etc.) que vayan en beneﬁcio de la población, donde las personas tanto del ámbito público como privado puedan tomar decisiones basadas en información.
+Use uno de los siguientes simuladores:https://regexr.com/https://www.site24x7.com/es/tools/analizador-de-regex.html
+
+--- Diapositiva 50 ---
+Ejemplos
+
+--- Diapositiva 51 ---
+Agrupamiento
+A menudo queremos obtener más información que solo si 
+encontramos una coincidencia o no (por ejemplo, es posible 
+que queramos saber qué texto coincidió)
+Agrupación: Encierra partes de la expresión regular entre 
+comillas para "recordar" estas partes de la coincidencia
+(\w+)\s([Ss]ciencia)
+
+--- Diapositiva 52 ---
+Expresiones regulares
+• Una vez que haya cargado los datos (o si necesita crear un 
+analizador para cargar algún otro formato de datos), a 
+menudo necesitará buscar elementos especíﬁcos dentro de 
+los datos.
+
+--- Diapositiva 53 ---
+Expresiones regulares
+1
+2
+Expresión regular:
+(.*)-(.*)
+
+--- Diapositiva 54 ---
+Ordenamiento y matching codicioso
+Hay un orden de operaciones en las expresiones regulares.
+abc|def coincide con las cadenas "abc" o "def", no "ab(c o d)ef"
+Puede evitar esto usando paréntesis, por ejemplo, a (bc | de) f
+Esto también crea un grupo, usa a(?:bc|de)f si no quieres capturarlo
+De forma predeterminada, las expresiones regulares intentan capturar la mayor cantidad de texto posible (coincidencia codiciosa)
+<(.*)> aplicado a <a>texto</a> coincidirá con la expresión completa 
+Si desea capturar la menor cantidad de texto posible, use <(.*?)> esto solo coincidirá con el término <a>
+
+--- Diapositiva 55 ---
+Características adicionales
+Omitimos muchos elementos aquí para que sea breve: líneas de inicio/ﬁn, anticipación, 
+grupos con nombre, etc.
+No se preocupe si no puede recordar toda esta notación 
+Use los documentos: 
+https://docs.python.org/3/howto/regex.html
+https://docs.python.org/3/library/re.html
+Pruebe expresiones de prueba para ver qué sucede
+Tutorial interactivo: https://regexone.com/
+
+--- Diapositiva 56 ---
+CASO PRÁCTICO 
+Un RUT chileno tiene la forma 12.345.678-9. 
+¿CÓMO SERÍA UNA EXPRESIÓN SIMPLIFICADA PARA VALIDARLO?
+
+--- Diapositiva 57 ---
+CASO PRÁCTICO - SOLUCIÓN
+Un RUT chileno tiene la forma 12.345.678-9. Una expresión simpliﬁcada para 
+validarlo:
+^\d{1,2}\.\d{3}\.\d{3}-[\dkK]$
+●\d{1,2} → uno o dos dígitos iniciales.
+●\.\d{3}\.\d{3} → dos grupos de tres dígitos separados por puntos.
+●[\dkK] → el dígito veriﬁcador, puede ser un número o la letra k.
+Pruébalo en regexr.com con tu propio RUT.
+
+--- Diapositiva 58 ---
+VERDADERO O FALSO
+1. El cuantiﬁcador + exige que el carácter aparezca una o más 
+veces.  
+2. La expresión a? exige que el carácter 'a' aparezca exactamente 
+una vez.
+
+--- Diapositiva 59 ---
+VERDADERO O FALSO
+1. El cuantiﬁcador + exige que el carácter aparezca una o más 
+veces.  →  Verdadero
+2. La expresión a? exige que el carácter 'a' aparezca exactamente 
+una vez.  →  Falso (cero o una vez)
+
+--- Diapositiva 60 ---
+CIENCIA DE 
+DATOS 2026 - 02
+Clase 1: Recolectar datos y web 
+scraping
+Docentes:
+Merary Carrasco M.
+Cristhian Rabi R.
+
+--- Diapositiva 61 ---
+REFERENCIAS
+• Material adaptado y basado en material de Dr. Juan Bekios
